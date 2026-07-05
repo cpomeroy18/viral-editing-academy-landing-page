@@ -1,0 +1,108 @@
+---
+import "../styles/global.css";
+import { site } from "../config";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = site.name,
+  description = site.description,
+  image = "/images/og-tom.jpg",
+} = Astro.props;
+const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
+// Absolute URL for the share image (social platforms require a full URL).
+const ogImage = Astro.site ? new URL(image, Astro.site).href : image;
+---
+
+<!doctype html>
+<html
+  lang="en"
+  data-theme={site.theme}
+  data-preset={site.preset}
+  data-theme-preset={site.themePreset}
+  data-default-theme={site.theme}
+  data-default-theme-preset={site.themePreset}
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* Apply a saved theme/preset/customiser choice before paint to avoid a flash. */}
+    <script is:inline>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var t = localStorage.getItem("ttb-theme");
+          if (t === "light" || t === "dark") root.dataset.theme = t;
+          var p = localStorage.getItem("ttb-preset");
+          if (p) root.dataset.preset = p;
+          var tp = localStorage.getItem("ttb-theme-preset");
+          if (tp) root.dataset.themePreset = tp;
+          var c = localStorage.getItem("ttb-customizer");
+          if (c) {
+            var vars = JSON.parse(c);
+            for (var k in vars) root.style.setProperty(k, vars[k]);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="min-h-[100dvh] bg-surface text-ink">
+    <slot />
+
+    <script>
+      // Recolour the favicon to match the brand accent + theme, live with the
+      // Customise Theme panel. The accent can be an oklch() value, which the
+      // favicon renderer often can't paint - so we normalise it to hex via a
+      // canvas first, then hard-replace the <link> so the browser re-reads it.
+      const faviconColor = () => {
+        const probe = document.createElement("span");
+        probe.style.cssText = "display:none;color:var(--color-brand-500)";
+        document.body.appendChild(probe);
+        const resolved = getComputedStyle(probe).color;
+        probe.remove();
+        const ctx = document.createElement("canvas").getContext("2d");
+        if (!ctx) return "#14a89e";
+        ctx.fillStyle = "#14a89e";
+        try { ctx.fillStyle = resolved; } catch (e) {}
+        return ctx.fillStyle;
+      };
+      const setFavicon = () => {
+        const svg =
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' +
+          '<rect width="32" height="32" rx="7" fill="' + faviconColor() + '"/>' +
+          '<path d="M16 22V11M11.5 15.5 16 11 20.5 15.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+          "</svg>";
+        const href = "data:image/svg+xml," + encodeURIComponent(svg);
+        document.querySelectorAll('link[rel~="icon"]').forEach((n) => n.remove());
+        const link = document.createElement("link");
+        link.setAttribute("rel", "icon");
+        link.setAttribute("type", "image/svg+xml");
+        link.setAttribute("href", href);
+        document.head.appendChild(link);
+      };
+      setFavicon();
+      new MutationObserver(setFavicon).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme", "data-theme-preset", "style"],
+      });
+    </script>
+  </body>
+</html>
