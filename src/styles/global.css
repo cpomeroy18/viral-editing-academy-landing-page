@@ -72,7 +72,7 @@
 
   /* Card + image corner radius (the radius control drives this too).
      Generates the `rounded-card` utility. */
-  --radius-card: 1rem;
+  --radius-card: 0.5rem;
 
   /* Type weights + case (the Customise Theme panel / brand-setup drive these). */
   --heading-weight: 800; /* h1-h3 */
@@ -221,8 +221,8 @@ html {
   --brand-hue: 25;            /* red */
   --brand-chroma: 1.2;
   --color-brand-ink: #ffffff; /* white on red buttons (light) */
-  --radius-control: 0px;      /* brutalism = no radius */
-  --radius-card: 0px;
+  --radius-control: 0.5rem;   /* softened from brutalism default per brand choice */
+  --radius-card: 0.5rem;
   --brutal-border: 3px;       /* chunky borders */
   --brutal-shadow: 4px 4px 0 0; /* hard offset shadow (no blur) */
   --brutal-shadow-color: #000;  /* black on light cards (overridden on dark cards + dark mode) */
