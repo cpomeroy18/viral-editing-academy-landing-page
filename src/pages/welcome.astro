@@ -1,0 +1,502 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaButton from "../components/CtaButton.astro";
+import SiteNav from "../components/SiteNav.astro";
+import Hero from "../components/Hero.astro";
+import ProofStrip from "../components/ProofStrip.astro";
+import StudentWins from "../components/StudentWins.astro";
+import CheckoutCard from "../components/CheckoutCard.astro";
+import Faq from "../components/Faq.astro";
+import StickyCta from "../components/StickyCta.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import ThemeCustomizer from "../components/ThemeCustomizer.astro";
+
+// ============================================================
+// OFFER LANDING PAGE - Viral Editing Academy
+// ALL visible copy lives in these consts; structure + behaviour below stay as-is.
+// ============================================================
+
+const navLinks = [
+  { label: "How it works", href: "#how" },
+  { label: "What's included", href: "#included" },
+  { label: "Pricing", href: "#checkout" },
+  { label: "FAQ", href: "#faq" },
+];
+
+// --- HERO ---
+const heroHeadline =
+  'Learn to <span class="text-brand-500">edit viral content</span> with just your phone';
+const heroSubheadline =
+  "A step-by-step course that turns your iPhone into a scroll-stopping content machine, so you can grow your following, land brand deals, and finally make content people can't scroll past.";
+const heroBullets = [
+  "Mobile-only editing, no expensive gear",
+  "Reverse-engineer any viral effect you see",
+  "A growing vault of trending FX tutorials",
+  "Real feedback inside a private creator community",
+];
+
+// Real background stats on Colin (the instructor) - swap if you'd rather
+// lead with course-level numbers once you have them.
+const proofStats = [
+  { value: "100K+", label: "IG followers grown in 90 days" },
+  { value: "10+", label: "years creating video content" },
+  { value: "5", label: "core mobile editing tools taught" },
+  { value: "$0", label: "extra gear required" },
+];
+
+// --- PROBLEM ---
+const problems = [
+  "You put real effort into a video and it barely gets any views.",
+  "You've tried every trend, sound, and hashtag - nothing sticks.",
+  "You're not sure what to create next that'll actually grab attention.",
+  "You keep watching other creators blow up while you're stuck in the same lane.",
+];
+
+// --- SOLUTION ---
+const steps = [
+  { title: "Learn proven viral video structures", desc: "See exactly how top-performing videos are built, so you're never guessing what to post." },
+  { title: "Master the 5 core mobile editing tools", desc: "A handful of tools make up most of the effects you see going viral - learn them once, use them everywhere." },
+  { title: "Plug into a growing FX vault", desc: "Step-by-step breakdowns of trending effects, so you always know exactly what to create next." },
+];
+
+// --- STUDENT WINS (rotating, result-led) ---
+const studentWins = [
+  {
+    result: "Two videos, 100K+ and 250K+ views",
+    quote: "Colin really does a phenomenal job breaking down step by step how to create such eye catching VFX content straight from my phone. Both videos have over 100k and over 250k views.",
+    name: "Ursulline",
+    meta: "Lifestyle content creator",
+    image: "/images/testimonials/ursulline.jpg",
+  },
+  {
+    result: "From frustrated to finally creative",
+    quote: "Before these last few sessions with Colin, editing videos was a source of constant frustration for me. He had a way of demystifying a lot of the basics in iPhone editing that really opened the floodgates of creativity for me.",
+    name: "Chris",
+    meta: "Portland, OR · @chiduly",
+    image: "/images/testimonials/chris.jpg",
+  },
+  {
+    result: "New FX skills, views up right away",
+    quote: "Working with Colin has been game-changing. Not only did I learn editing and FX shortcuts, but he showed me exactly how to use them to boost my views right away.",
+    name: "Ali",
+    meta: "@yog.ali",
+    image: "/images/testimonials/ali.jpg",
+  },
+  {
+    result: "Felt like 1-on-1 mentorship, not just a course",
+    quote: "Colin's workshop wasn't just another course - it felt like sitting down with a mentor who genuinely cares about your success. I've taken so many courses before, always chasing that 'magic formula,' but this was different. Colin's approach was so in-depth, it felt like a 1-on-1 coaching session. He didn't just teach; he connected.",
+    name: "Walter Cañas",
+    meta: "Independent freelancer",
+    image: "/images/testimonials/walter.jpg",
+  },
+];
+
+// --- WHAT YOU GET ---
+// Placeholder perceived values below (no current bonuses/pricing tiers to draw on) -
+// confirm or adjust these before launch.
+const deliverables = [
+  { title: "Core video editing lessons", desc: "Everything you need to master creative, scroll-stopping editing on your phone - from the basics to advanced technique.", value: "$197" },
+  { title: "Step-by-step VFX tutorials", desc: "Follow-along tutorials that walk you from idea, to shooting, to a finished, postable effect.", value: "$197" },
+  { title: "The Viral Effect Vault", desc: "A growing, sortable library of trending effects, each with its own step-by-step breakdown - never run out of ideas.", value: "$97" },
+  { title: "Private creator community", desc: "Share your work, get feedback, and stay accountable alongside other ambitious creators.", value: "$97" },
+];
+
+// --- OUTCOMES ---
+const outcomes = [
+  { before: "Hours per video, weak views", after: "Efficient edits that actually convert" },
+  { before: "Guessing what to post next", after: "A repeatable system for viral-ready content" },
+  { before: "Watching everyone else blow up", after: "Building your own following, on your terms" },
+  { before: "Complicated, expensive software", after: "Everything shot and edited on your phone" },
+];
+
+// --- WHO IT'S FOR ---
+const forYou = [
+  "You're a creator, business owner, or professional showcasing a skill and you're stuck on growth.",
+  "You've got the content experience but not the editing chops to make it pop.",
+  "You want to stand out from the crowd instead of blending in.",
+  "You're happy shooting and editing everything on your phone.",
+  "You're ready to learn a repeatable process, not just chase one lucky post.",
+];
+const notForYou = [
+  "You want someone else to edit your videos for you.",
+  "You're not making content at all right now.",
+  "You need a full production / camera-and-software workflow.",
+  "You're looking for a guaranteed-overnight-virality gimmick.",
+  "You're not willing to put in the reps to build the skill.",
+];
+
+// --- TESTIMONIALS GRID ---
+const wins = [
+  { quote: "Colin was super helpful! I'm not new to CapCut, but just one session has already drastically improved my editing. I highly recommend getting coached by Colin if you want to level up your editing skills!", name: "Stacey", role: "@pink.vegan", result: "1 session, real jump", image: "/images/testimonials/stacey.jpg" },
+  { quote: "This course is FIRE. I've got so many ideas flying thru my head! Colin explains the steps and tips so thoroughly!", name: "Alex A", role: "Aspiring content creator", result: "Ideas unlocked", image: "/images/testimonials/alex-a.jpg" },
+  { quote: "Colin meticulously walked me through the process and opened my eyes to strategies that would improve my content across all platforms.", name: "Craig", role: "Houston, TX · @iamtheblazerking", result: "Growth across platforms", image: "/images/testimonials/craig.jpg" },
+  { quote: "What I like most about this course is how practical and actionable it is. Colin breaks everything down into clear, step-by-step instructions, making it easy to follow and implement. This has been a game-changer for me!", name: "Helen Minh", role: "Content creator", result: "Time saved, audience noticed", image: "/images/testimonials/helen.jpg" },
+  { quote: "Thank you so much for your course. It was exactly what I was looking for - quick, efficient. I already had a good knowledge of CapCut but your course helped me learn so much more within a short period.", name: "Franziska Ehret", role: "Social media coach", result: "New CapCut skills, fast", image: "/images/testimonials/franziska.jpg" },
+  { quote: "Colin is an amazing soul who goes out beyond to help you get what works for you and does not quit until he goes all out to make sure it works.", name: "Inam", role: "Actor", result: "Goes above and beyond", image: "/images/testimonials/inam.jpg" },
+];
+
+// --- CHECKOUT (one-time) ---
+const checkoutDeliverables = deliverables.map((d) => ({ label: d.title, value: d.value }));
+const checkoutOptions = [
+  { label: "One-time payment", price: "$150", note: "Lifetime access, pay once", featured: true },
+];
+
+// --- ABOUT ---
+const about = {
+  name: "Colin Pomeroy",
+  role: "Founder, Viral Editing Academy",
+  bio: "I'm a video creator with 10+ years of experience. After years of trial and error making content that got zero traction, I discovered how to use mobile VFX and creative editing to consistently capture attention - growing to 100K+ Instagram followers and landing brand deals, all from my phone. Viral Editing Academy is the exact system I use, taught step-by-step.",
+  image: "/images/about-colin.jpg",
+};
+
+// --- FAQ ---
+const faqs = [
+  { q: "What if I have zero editing or social media experience?", a: "No problem. The course is built to take you from zero editing experience to creating scroll-stopping videos, through step-by-step, easy-to-follow lessons." },
+  { q: "Will this work for my niche or type of content?", a: "Yes. The techniques are effect and editing skills, not niche-specific tricks - they work whether you're a creator, a business owner, or a professional showcasing a skill." },
+  { q: "What's included?", a: "Core video editing lessons, step-by-step VFX tutorials, the Viral Effect Vault, and private creator community access." },
+  { q: "How quickly will I see results?", a: "That depends on how much you practice and post. Most students start creating polished effects within their first few days of working through the lessons." },
+  { q: "Do I need expensive gear or editing software?", a: "No. All you need is your phone and a free app (CapCut). An inexpensive tripod is recommended, and gear suggestions are included in the course." },
+  { q: "How do I get started?", a: "Click any \"Enroll now\" button on this page to check out - you'll get instant access." },
+  { q: "How long do I have access?", a: "Lifetime access to the course and the private community, including all future updates. Go at your own pace." },
+];
+
+// --- SECTION HEADINGS, EYEBROWS & CTAs (all editable copy lives here too) ---
+const pageTitle = "Viral Editing Academy";
+const ctaLabel = "Enroll now - $150"; // shared by nav, hero, final CTA + sticky bar
+
+const heroEyebrow = "Viral Editing Academy";
+const heroSecondaryLabel = "See how it works";
+const heroTrustLabel = "Backed by real student results";
+
+const problemEyebrow = "The problem";
+const problemHeading = "Effort isn't the problem. Your edits are.";
+
+const solutionEyebrow = "How it works";
+const solutionHeading = "A repeatable system, not a lucky post";
+const solutionSub =
+  "Viral videos aren't random. The creators who go viral on repeat use a system - here's the one you'll learn.";
+
+const winsEyebrow = "Student wins";
+const winsHeading = "Results from real students";
+const winsSub = "Real creators, real edits, real results - built with the same system you're getting.";
+
+const includedEyebrow = "Everything included";
+const includedHeading = "Here's exactly what you get";
+
+const outcomesEyebrow = "What changes";
+const outcomesHeading = "From stuck to scroll-stopping";
+
+const whoEyebrow = "Who it's for";
+const whoHeading = "Read this before you enroll";
+const forYouTitle = "This is for you if";
+const notForYouTitle = "This isn't for you if";
+
+const testimonialsEyebrow = "Real results";
+const testimonialsHeading = "What students are saying";
+
+const checkoutEyebrow = "Your checkout";
+const checkoutTitle = "Enroll in Viral Editing Academy";
+const checkoutTotalValue = "$588";
+const checkoutBadges = ["Lifetime access", "Instant access", "Learn at your own pace"];
+
+const aboutEyebrow = "About";
+const aboutHeading = `Hi, I'm ${about.name}`;
+
+const faqEyebrow = "Questions";
+const faqHeading = "Frequently asked questions";
+
+const finalCtaHeading = "Turn your phone into a scroll-stopping content machine";
+const finalCtaSub =
+  "Enroll in Viral Editing Academy and start creating edits that get attention, grow your following, and open doors - all with your phone.";
+const finalCtaTrust = "Instant access · Lifetime access · Just $150";
+
+const footerTagline = "Learn to edit viral content with just your phone.";
+const stickyNote = "Viral Editing Academy";
+
+const SECTION = "mx-auto max-w-6xl px-6 py-16 md:py-20";
+const HEADING = "text-3xl font-bold tracking-tight text-ink md:text-4xl";
+
+// --- POST-OPTIN CONFIRMATION BANNER (welcome.astro only) ---
+const confirmationBanner =
+  "You're in! Check your inbox — the FX Mini-Vault is on its way. While you're here...";
+---
+
+<Base title={pageTitle} description={heroSubheadline}>
+  <div class="bg-brand-500 px-6 py-3 text-brand-ink">
+    <div class="mx-auto flex max-w-6xl items-center justify-center gap-2 text-center text-sm font-semibold">
+      <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-ink/20">
+        <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4 10-12" />
+        </svg>
+      </span>
+      <span>{confirmationBanner}</span>
+    </div>
+  </div>
+
+  <SiteNav links={navLinks} ctaLabel={ctaLabel} />
+
+  <Hero
+    mode="split"
+    eyebrow={heroEyebrow}
+    headline={heroHeadline}
+    subheadline={heroSubheadline}
+    bullets={heroBullets}
+    ctaLabel={ctaLabel}
+    secondaryLabel={heroSecondaryLabel}
+    secondaryHref="#how"
+    trustLabel={heroTrustLabel}
+    image="https://picsum.photos/seed/vea-hero/1100/900"
+  />
+
+  <ProofStrip stats={proofStats} />
+
+  <div data-sticky-sentinel></div>
+
+  <!-- PROBLEM -->
+  <section class="bg-surface-2">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{problemEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{problemHeading}</h2>
+      </div>
+      <ul class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+        {
+          problems.map((p) => (
+            <li class="flex items-start gap-3 rounded-card border border-line bg-card p-5 text-ink">
+              <span class="mt-0.5 text-lg leading-none text-brand-500">&#10005;</span>
+              <span class="text-base leading-snug">{p}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section id="how" class="bg-surface">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{solutionEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{solutionHeading}</h2>
+        <p class="mt-4 text-lg leading-relaxed text-ink-muted">
+          {solutionSub}
+        </p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          steps.map((s, i) => (
+            <div class="rounded-card border border-line bg-card p-6">
+              <span class="flex h-9 w-9 items-center justify-center rounded-full bg-chip text-sm font-bold text-chip-ink">
+                {i + 1}
+              </span>
+              <h3 class="mt-4 text-lg font-bold text-ink">{s.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-muted">{s.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDENT WINS (rotating, result-led) -->
+  <StudentWins
+    eyebrow={winsEyebrow}
+    heading={winsHeading}
+    subheading={winsSub}
+    wins={studentWins}
+  />
+
+  <!-- WHAT YOU GET -->
+  <section id="included" class="bg-surface-2">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{includedEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{includedHeading}</h2>
+      </div>
+      <div class="mx-auto mt-12 max-w-4xl border-t border-line">
+        {
+          deliverables.map((d) => (
+            <div class="border-b border-line py-7">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-xl font-bold text-ink md:text-2xl">{d.title}</h3>
+                <span class="mt-1 shrink-0 rounded-full border border-line px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+                  {d.value} value
+                </span>
+              </div>
+              <p class="mt-2 max-w-2xl text-base leading-relaxed text-ink-muted">{d.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="bg-surface">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{outcomesEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{outcomesHeading}</h2>
+      </div>
+      <div class="mx-auto mt-10 max-w-2xl divide-y divide-line overflow-hidden rounded-card border border-line bg-card">
+        {
+          outcomes.map((o) => (
+            <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-5 py-4 text-sm sm:gap-5 sm:px-6">
+              <span class="text-ink-muted line-through">{o.before}</span>
+              <span class="text-brand-500" aria-hidden="true">&#8594;</span>
+              <span class="font-semibold text-ink">{o.after}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="bg-surface-2">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{whoEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{whoHeading}</h2>
+      </div>
+      <div class="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
+        <div class="rounded-card bg-surface-dark p-7 text-ink-dark md:p-8">
+          <h3 class="text-xl font-bold">{forYouTitle}</h3>
+          <ul class="mt-5 space-y-4">
+            {
+              forYou.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-500">
+                    <svg class="h-3 w-3 text-brand-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4 10-12" />
+                    </svg>
+                  </span>
+                  <span class="text-sm leading-relaxed">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="rounded-card border border-line bg-card p-7 md:p-8">
+          <h3 class="text-xl font-bold text-ink">{notForYouTitle}</h3>
+          <ul class="mt-5 space-y-4">
+            {
+              notForYou.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink-muted/15 text-ink-muted">
+                    <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+                      <path d="m6 6 12 12" />
+                      <path d="m18 6-12 12" />
+                    </svg>
+                  </span>
+                  <span class="text-sm leading-relaxed text-ink-muted">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / STUDENT WINS -->
+  <section class="bg-surface-2">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{testimonialsEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{testimonialsHeading}</h2>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          wins.map((w) => (
+            <div class="flex flex-col rounded-card border border-line bg-card p-6">
+              <div class="flex text-sm leading-none tracking-wide text-brand-500" aria-hidden="true">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
+              </div>
+              <p class="mt-4 flex-1 text-base leading-relaxed text-ink">&#8220;{w.quote}&#8221;</p>
+              <div class="mt-5 flex items-center gap-3 border-t border-line pt-4">
+                <img
+                  src={w.image}
+                  alt={w.name}
+                  width="40"
+                  height="40"
+                  class="h-10 w-10 shrink-0 rounded-full object-cover"
+                  loading="lazy"
+                />
+                <div class="min-w-0 flex-1">
+                  <p class="truncate text-sm font-semibold text-ink">{w.name}</p>
+                  <p class="truncate text-xs text-ink-muted">{w.role}</p>
+                </div>
+                <span class="shrink-0 rounded-full bg-chip px-2.5 py-1 text-xs font-bold text-chip-ink">{w.result}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT (one-time) -->
+  <CheckoutCard
+    eyebrow={checkoutEyebrow}
+    title={checkoutTitle}
+    deliverables={checkoutDeliverables}
+    totalValue={checkoutTotalValue}
+    options={checkoutOptions}
+    badges={checkoutBadges}
+  />
+
+  <!-- ABOUT -->
+  <section class="bg-surface">
+    <div class={SECTION}>
+      <div class="grid items-center gap-10 md:grid-cols-[2fr_3fr] md:gap-14">
+        <div class="overflow-hidden rounded-card border border-line bg-surface-2">
+          <img src={about.image} alt={about.name} width="900" height="1352" class="aspect-[4/5] w-full object-cover" loading="lazy" />
+        </div>
+        <div>
+          <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{aboutEyebrow}</p>
+          <h2 class={`mt-3 ${HEADING}`}>{aboutHeading}</h2>
+          <p class="mt-2 text-base font-medium text-ink-muted">{about.role}</p>
+          <p class="mt-5 text-lg leading-relaxed text-ink-muted">{about.bio}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-surface-2">
+    <div class="mx-auto max-w-3xl px-6 py-16 md:py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{faqEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{faqHeading}</h2>
+      </div>
+      <div class="mt-10">
+        <Faq items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="bg-surface-dark text-ink-dark">
+    <div class="mx-auto max-w-3xl px-6 py-20 text-center md:py-24">
+      <h2 class="text-3xl font-extrabold tracking-tight md:text-4xl">
+        {finalCtaHeading}
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-ink-dark/70">
+        {finalCtaSub}
+      </p>
+      <div class="mt-8 flex justify-center">
+        <CtaButton label={ctaLabel} />
+      </div>
+      <p class="mt-4 text-xs uppercase tracking-wide text-ink-dark/50">
+        {finalCtaTrust}
+      </p>
+    </div>
+  </section>
+
+  <SiteFooter tagline={footerTagline} />
+
+  <StickyCta label={ctaLabel} note={stickyNote} />
+
+  <ThemeCustomizer />
+</Base>
