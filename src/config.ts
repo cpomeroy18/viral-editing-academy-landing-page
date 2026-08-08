@@ -9,8 +9,8 @@ export const site = {
 
   // Your Go High Level (GHL) form embed URL - the `src` from your form's
   // embed snippet (link.contentcreatormachine.com/widget/form/XXXXXXX).
-  ghlFormUrl: "https://link.contentcreatormachine.com/widget/form/Sg8rL0t55eWESmBmeSsc",
-  ghlFormName: "Viral Content System Email Course",
+  ghlFormUrl: "https://link.contentcreatormachine.com/widget/form/dG6BvJLmd32em6tFH0rr",
+  ghlFormName: "FX Mini-Vault",
 
   // Where your offer-page CTAs send people (your Stripe / checkout link).
   checkoutUrl: "https://buy.stripe.com/14AeVcfv03FH2sl1GDbo400",
