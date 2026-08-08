@@ -45,11 +45,11 @@ export const problems = [
   "You keep watching other creators blow up while you're stuck in the same lane.",
 ];
 
-// --- SOLUTION ---
+// --- SOLUTION / HOW IT WORKS ---
 export const steps = [
-  { title: "Learn proven viral video structures", desc: "See exactly how top-performing videos are built, so you're never guessing what to post." },
-  { title: "Master the 5 core mobile editing tools", desc: "A handful of tools make up most of the effects you see going viral - learn them once, use them everywhere." },
-  { title: "Plug into a growing FX vault", desc: "Step-by-step breakdowns of trending effects, so you always know exactly what to create next." },
+  { title: "Find the right effect", desc: "Search the Vault by difficulty, style, use case, or just the hook that caught your eye. If you've seen it go viral, it's probably in here." },
+  { title: "Follow the tutorial", desc: "Every effect comes with a step-by-step breakdown - no guessing, no piecing it together from three different YouTube videos." },
+  { title: "Apply it to your next video", desc: "Shoot it, edit it, post it. That's the whole system." },
 ];
 
 // --- STUDENT WINS (rotating, result-led) ---
@@ -84,31 +84,35 @@ export const studentWins = [
   },
 ];
 
-// --- WHAT YOU GET ---
-// Placeholder perceived values below (no current bonuses/pricing tiers to draw on) -
-// confirm or adjust these before launch.
+// --- WHAT YOU GET / PRICING & BONUS STACK ---
+// Core product + 5 bonuses. checkoutTotalValue below is the exact sum
+// (197 + 299 + 99 + 29 + 99 + 99 = 822), not an approximation.
 export const deliverables = [
-  { title: "Core video editing lessons", desc: "Everything you need to master creative, scroll-stopping editing on your phone - from the basics to advanced technique.", value: "$197" },
-  { title: "Step-by-step VFX tutorials", desc: "Follow-along tutorials that walk you from idea, to shooting, to a finished, postable effect.", value: "$197" },
-  { title: "The Viral Effect Vault", desc: "A growing, sortable library of trending effects, each with its own step-by-step breakdown - never run out of ideas.", value: "$97" },
-  { title: "Private creator community", desc: "Share your work, get feedback, and stay accountable alongside other ambitious creators.", value: "$97" },
+  { title: "Viral VFX Vault", desc: "The full library, searchable by difficulty, style, and use case, with a step-by-step tutorial behind every effect.", value: "$197" },
+  { title: "Bonus 1: Viral Editing Academy (Full Course)", desc: "The complete system, start to finish - building a repeatable process for viral-ready content.", value: "$299" },
+  { title: "Bonus 2: Advanced Viral FX Course", desc: "Next-level effects and technique once you've got the basics down.", value: "$99" },
+  { title: "Bonus 3: Mobile Transitions Mini-Course", desc: "The transitions that make an edit feel seamless instead of choppy.", value: "$29" },
+  { title: "Bonus 4: CapCut Bootcamp", desc: "Every tool, shortcut, and setting worth knowing, so you're never fumbling mid-edit.", value: "$99" },
+  { title: "Bonus 5: \"5 Ideas Into 30 Posts\" Workshop", desc: "Turn one idea into a month of content instead of one post and a blank page tomorrow.", value: "$99" },
 ];
 
-// --- OUTCOMES ---
-export const outcomes = [
-  { before: "Hours per video, weak views", after: "Efficient edits that actually convert" },
-  { before: "Guessing what to post next", after: "A repeatable system for viral-ready content" },
-  { before: "Watching everyone else blow up", after: "Building your own following, on your terms" },
-  { before: "Complicated, expensive software", after: "Everything shot and edited on your phone" },
+// --- BENEFITS ---
+export const benefits = [
+  { title: "Skyrocket your views and following", desc: "Every effect in the Vault is already proven - real videos that pulled real views. Steal what works instead of guessing." },
+  { title: "Never run out of content ideas again", desc: "Open the Vault, pick an effect, shoot. No more staring at your phone wondering what to post next." },
+  { title: "Edit like a pro with just your phone", desc: "No laptop, no expensive software, no gear list. Everything's built for CapCut on your phone - the same way I do it." },
+  { title: "Save hours of editing time", desc: "Every tutorial skips the trial and error. You get the exact steps, not an afternoon spent reverse-engineering someone else's edit." },
+  { title: "Stand out in the scroll", desc: "Most people are posting the same flat talking-head video. A few seconds of the right effect is what stops the thumb." },
+  { title: "Stop guessing. Start growing.", desc: "You don't need a content strategy degree. You need a system you can actually follow - this is that system." },
 ];
 
 // --- WHO IT'S FOR ---
 export const forYou = [
-  "You're a creator, business owner, or professional showcasing a skill and you're stuck on growth.",
-  "You've got the content experience but not the editing chops to make it pop.",
-  "You want to stand out from the crowd instead of blending in.",
-  "You're happy shooting and editing everything on your phone.",
-  "You're ready to learn a repeatable process, not just chase one lucky post.",
+  "You've never edited a video in your life - zero experience is the starting point, not a dealbreaker.",
+  "You create in any niche - fitness, business, comedy, coaching, it doesn't matter. These are editing skills, not niche tricks.",
+  "You're a business owner making your own content and want it to look like someone made it for you.",
+  "You're already a creator and want to level up past the basics.",
+  "You're chasing brand deals or trying to go full-time, and know better edits mean better numbers.",
 ];
 export const notForYou = [
   "You want someone else to edit your videos for you.",
@@ -131,7 +135,7 @@ export const wins = [
 // --- CHECKOUT (one-time) ---
 export const checkoutDeliverables = deliverables.map((d) => ({ label: d.title, value: d.value }));
 export const checkoutOptions = [
-  { label: "One-time payment", price: "$150", note: "Lifetime access, pay once", featured: true },
+  { label: "One-time payment", price: "$97", note: "Lifetime access, pay once", featured: true },
 ];
 
 // --- ABOUT ---
@@ -146,18 +150,18 @@ export const about = {
 
 // --- FAQ ---
 export const faqs = [
-  { q: "What if I have zero editing or social media experience?", a: "No problem. The course is built to take you from zero editing experience to creating scroll-stopping videos, through step-by-step, easy-to-follow lessons." },
-  { q: "Will this work for my niche or type of content?", a: "Yes. The techniques are effect and editing skills, not niche-specific tricks - they work whether you're a creator, a business owner, or a professional showcasing a skill." },
-  { q: "What's included?", a: "Core video editing lessons, step-by-step VFX tutorials, the Viral Effect Vault, and private creator community access." },
-  { q: "How quickly will I see results?", a: "That depends on how much you practice and post. Most students start creating polished effects within their first few days of working through the lessons." },
-  { q: "Do I need expensive gear or editing software?", a: "No. All you need is your phone and a free app (CapCut). An inexpensive tripod is recommended, and gear suggestions are included in the course." },
-  { q: "How do I get started?", a: "Click any \"Enroll now\" button on this page to check out - you'll get instant access." },
-  { q: "How long do I have access?", a: "Lifetime access to the course and the private community, including all future updates. Go at your own pace." },
+  { q: "What exactly is the Viral VFX Vault?", a: "It's a searchable library of proven viral video effects. Every effect is broken down step-by-step - the exact tools, the exact settings, done on your phone - so you're never guessing how something was made." },
+  { q: "Do I need any editing experience?", a: "No. Every tutorial assumes you're starting from zero. If you can tap record on your phone, you can follow along." },
+  { q: "Will this work for my niche?", a: "Yes. These are editing and effect skills, not niche-specific tricks. Doesn't matter if you're a creator, a coach, or a business owner posting your own content - the technique transfers." },
+  { q: "Can't I just learn this for free on YouTube or TikTok?", a: "You can find pieces of it, sure. But free tutorials are usually rushed, skip steps, or leave out the one detail that actually makes the effect work. Everything here is organized and built to be followed start to finish - not pieced together from ten different videos." },
+  { q: "What do I actually get inside?", a: "The Vault itself, plus five bonuses - the full Viral Editing Academy course, the Advanced Viral FX course, a mobile transitions mini-course, a CapCut bootcamp, and the \"5 Ideas Into 30 Posts\" workshop. Full breakdown above, with what each is worth on its own." },
+  { q: "Can I really do this with just my phone?", a: "Yes - that's the whole point. No laptop, no expensive software, no gear list. Everything's built around CapCut, the same way I edit." },
+  { q: "Is there a guarantee?", a: "Yes. Try it for 7 days. If it's not for you, email us and you'll get a full refund - no hoops to jump through." },
 ];
 
 // --- SECTION HEADINGS, EYEBROWS & CTAs (all editable copy lives here too) ---
 export const pageTitle = "Viral VFX Vault";
-export const ctaLabel = "Enroll now - $150"; // shared by nav, hero, final CTA + sticky bar
+export const ctaLabel = "Enroll now - $97"; // shared by nav, hero, final CTA + sticky bar
 
 export const heroEyebrow = "Viral VFX Vault";
 export const heroSecondaryLabel = "See how it works";
@@ -167,9 +171,9 @@ export const problemEyebrow = "The problem";
 export const problemHeading = "Effort isn't the problem. Your edits are.";
 
 export const solutionEyebrow = "How it works";
-export const solutionHeading = "A repeatable system, not a lucky post";
+export const solutionHeading = "Three steps. That's the whole system.";
 export const solutionSub =
-  "Viral videos aren't random. The creators who go viral on repeat use a system - here's the one you'll learn.";
+  "No filler lessons, no 40-minute videos to sit through - just find an effect, follow the steps, and post.";
 
 export const winsEyebrow = "Student wins";
 export const winsHeading = "Results from real students";
@@ -178,8 +182,8 @@ export const winsSub = "Real creators, real edits, real results - built with the
 export const includedEyebrow = "Everything included";
 export const includedHeading = "Here's exactly what you get";
 
-export const outcomesEyebrow = "What changes";
-export const outcomesHeading = "From stuck to scroll-stopping";
+export const benefitsEyebrow = "The benefits";
+export const benefitsHeading = "What actually changes when you use it";
 
 export const whoEyebrow = "Who it's for";
 export const whoHeading = "Read this before you enroll";
@@ -191,8 +195,12 @@ export const testimonialsHeading = "What students are saying";
 
 export const checkoutEyebrow = "Your checkout";
 export const checkoutTitle = "Enroll in Viral VFX Vault";
-export const checkoutTotalValue = "$588";
+export const checkoutTotalValue = "$822";
 export const checkoutBadges = ["Lifetime access", "Instant access", "Learn at your own pace"];
+
+// Shown separately from the checkout stack - not counted in checkoutTotalValue.
+export const testimonialIncentive =
+  "Get results and tell us about it - a testimonial (written or video) unlocks the Visual Hooks Masterclass, free.";
 
 export const aboutEyebrow = "About";
 export const aboutHeading = `Hi, I'm ${about.name}`;
@@ -203,7 +211,7 @@ export const faqHeading = "Frequently asked questions";
 export const finalCtaHeading = "Turn your phone into a scroll-stopping content machine";
 export const finalCtaSub =
   "Enroll in Viral VFX Vault and start creating edits that get attention, grow your following, and open doors - all with your phone.";
-export const finalCtaTrust = "Instant access · Lifetime access · Just $150";
+export const finalCtaTrust = "Instant access · Lifetime access · Just $97";
 
 export const footerTagline = "Learn to edit viral content with just your phone.";
 export const stickyNote = "Viral VFX Vault";

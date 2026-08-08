@@ -26,7 +26,7 @@ import {
   steps,
   studentWins,
   deliverables,
-  outcomes,
+  benefits,
   forYou,
   notForYou,
   wins,
@@ -49,8 +49,8 @@ import {
   winsSub,
   includedEyebrow,
   includedHeading,
-  outcomesEyebrow,
-  outcomesHeading,
+  benefitsEyebrow,
+  benefitsHeading,
   whoEyebrow,
   whoHeading,
   forYouTitle,
@@ -61,6 +61,7 @@ import {
   checkoutTitle,
   checkoutTotalValue,
   checkoutBadges,
+  testimonialIncentive,
   aboutEyebrow,
   aboutHeading,
   faqEyebrow,
@@ -174,20 +175,24 @@ import {
     </div>
   </section>
 
-  <!-- OUTCOMES -->
+  <!-- BENEFITS -->
   <section class="bg-surface">
     <div class={SECTION}>
       <div class="mx-auto max-w-2xl text-center">
-        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{outcomesEyebrow}</p>
-        <h2 class={`mt-3 ${HEADING}`}>{outcomesHeading}</h2>
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{benefitsEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{benefitsHeading}</h2>
       </div>
-      <div class="mx-auto mt-10 max-w-2xl divide-y divide-line overflow-hidden rounded-card border border-line bg-card">
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          outcomes.map((o) => (
-            <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-5 py-4 text-sm sm:gap-5 sm:px-6">
-              <span class="text-ink-muted line-through">{o.before}</span>
-              <span class="text-brand-500" aria-hidden="true">&#8594;</span>
-              <span class="font-semibold text-ink">{o.after}</span>
+          benefits.map((b) => (
+            <div class="rounded-card border border-line bg-card p-6">
+              <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500">
+                <svg class="h-4 w-4 text-brand-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4 10-12" />
+                </svg>
+              </span>
+              <h3 class="mt-4 text-lg font-bold text-ink">{b.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-muted">{b.desc}</p>
             </div>
           ))
         }
@@ -288,6 +293,11 @@ import {
     options={checkoutOptions}
     badges={checkoutBadges}
   />
+
+  <!-- TESTIMONIAL INCENTIVE (separate from the value stack above) -->
+  <div class="mx-auto max-w-2xl px-6 pb-16 text-center md:pb-20">
+    <p class="text-sm text-ink-muted">{testimonialIncentive}</p>
+  </div>
 
   <!-- ABOUT -->
   <section class="bg-surface">
