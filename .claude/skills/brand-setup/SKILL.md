@@ -1,6 +1,6 @@
 ---
 name: brand-setup
-description: Brand the Funnel Kit to a student's business in one command - sets their name, colours/theme, fonts, corner radius, Kit form, and checkout link by writing config.ts and global.css. Invoke when the user says "/brand-setup", "brand my kit", "set up my brand", or is starting a fresh copy of the kit.
+description: Brand the Funnel Kit to a student's business in one command - sets their name, colours/theme, fonts, corner radius, email form, and checkout link by writing config.ts and global.css. Invoke when the user says "/brand-setup", "brand my kit", "set up my brand", or is starting a fresh copy of the kit.
 ---
 
 # /brand-setup
@@ -22,8 +22,9 @@ defaults in brackets so they can just say "yeah" to any of them.
    - a custom accent colour (any colour name or hex - you'll map it to a hue)
 4. **Light or dark** by default? [light]
 5. **Corner style** - sharp / slightly round / round / pill? [slightly round]
-6. **Kit (ConvertKit) form ID** - found in their form's embed URL
-   `app.kit.com/forms/XXXXXXX/...` (the `XXXXXXX`). Skip if they don't have Kit yet.
+6. **Go High Level form embed URL** - the `src` from their form's embed
+   snippet (`link.contentcreatormachine.com/widget/form/XXXXXXX`). Skip if
+   they don't have a form yet.
 7. **Checkout / CTA link** - where the offer-page buttons send people (their
    Stripe/checkout URL). Skip if not selling yet.
 
@@ -35,7 +36,7 @@ vibe", infer sensible answers and tell them what you chose.
 ### A. `src/config.ts` (the `site` object)
 - `name` -> their business name
 - `description` -> their one-liner
-- `kitFormId` -> their form ID (leave `"YOUR_KIT_FORM_ID"` if none yet)
+- `ghlFormUrl` -> their form's embed `src` URL (leave as-is if none yet)
 - `checkoutUrl` -> their checkout link (leave as-is if none yet)
 - `theme` -> `"light"` or `"dark"`
 - `themePreset` -> their chosen built-in theme, or `"default"` if they're using
@@ -95,7 +96,7 @@ experimenting with looks):
 ## Step 4 - Confirm
 
 1. Run `npm run dev` (or tell them to) and give them the local URL.
-2. Summarise exactly what you changed (name, theme, hue, radius, Kit, checkout).
+2. Summarise exactly what you changed (name, theme, hue, radius, form, checkout).
 3. Remind them: the gear panel still previews *other* looks live, but their
    saved brand is now the default everywhere.
 4. Point them to `/build-page` to start filling in their pages.
@@ -103,5 +104,5 @@ experimenting with looks):
 ## Rules
 - Only edit `config.ts` and `global.css` (+ `Logo.astro` if needed). Don't touch
   components or restructure templates - the design system keeps things on-brand.
-- Never invent a Kit form ID or checkout URL. Leave the placeholder if unknown.
+- Never invent a form embed URL or checkout URL. Leave the placeholder if unknown.
 - Keep the existing comments in `config.ts`; just change the values.

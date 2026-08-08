@@ -68,9 +68,9 @@ copy, FAQ, and the section headings.
   resizing or the colour strips out (see CLAUDE.md).
 
 ### Forms
-The opt-in forms already post to the Kit form set in `config.ts`. If
-`kitFormId` is still `"YOUR_KIT_FORM_ID"`, remind them to run `/brand-setup` or
-set it so signups actually land in Kit.
+The opt-in forms already embed the Go High Level form set in `config.ts`
+(`ghlFormUrl`). If it's still a placeholder, remind them to run `/brand-setup`
+or set it so signups actually land in their GHL account.
 
 ## Step 4 - Show them
 

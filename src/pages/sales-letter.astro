@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Logo from "../components/Logo.astro";
 import TextLink from "../components/TextLink.astro";
-import EmailForm from "../components/EmailForm.tsx";
+import GhlForm from "../components/GhlForm.tsx";
 import MobileCtaSheet from "../components/MobileCtaSheet.tsx";
 
 // ============================================================
@@ -291,7 +291,7 @@ const orgName = "Time to Build";
           <p class="mt-2.5 text-sm leading-relaxed text-ink-muted">{cardBody}</p>
 
           <div class="mt-5 border-t border-line pt-5">
-            <EmailForm client:load submitLabel={submitLabel} />
+            <GhlForm instanceId="desktop" />
           </div>
 
           <div class="mt-5 border-t border-line pt-5">
@@ -317,7 +317,6 @@ const orgName = "Time to Build";
   <MobileCtaSheet
     client:load
     ctaLabel={submitLabel}
-    submitLabel={submitLabel}
     sheetTitle={cardTitle}
     sheetBody={cardBody}
   />

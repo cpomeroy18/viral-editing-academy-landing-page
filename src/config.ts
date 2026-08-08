@@ -7,10 +7,10 @@ export const site = {
   name: "Viral Editing Academy",
   description: "Helping creators edit viral short-form content",
 
-  // Your Kit (ConvertKit) form ID. The lead form subscribes people to this form,
-  // which triggers whatever sequence/automation you connect to it in Kit.
-  // Find it in your form's embed URL: app.kit.com/forms/XXXXXXX/...  -> XXXXXXX is the ID.
-  kitFormId: "YOUR_KIT_FORM_ID",
+  // Your Go High Level (GHL) form embed URL - the `src` from your form's
+  // embed snippet (link.contentcreatormachine.com/widget/form/XXXXXXX).
+  ghlFormUrl: "https://link.contentcreatormachine.com/widget/form/Sg8rL0t55eWESmBmeSsc",
+  ghlFormName: "Viral Content System Email Course",
 
   // Where your offer-page CTAs send people (your Stripe / checkout link).
   checkoutUrl: "https://buy.stripe.com/14AeVcfv03FH2sl1GDbo400",

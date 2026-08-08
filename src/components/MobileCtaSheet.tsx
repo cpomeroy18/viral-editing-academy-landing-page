@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { X } from "lucide-react";
-import EmailForm from "./EmailForm";
+import GhlForm from "./GhlForm";
 
 interface Props {
   ctaLabel?: string;
-  submitLabel?: string;
   sheetTitle?: string;
   sheetBody?: string;
 }
@@ -13,7 +12,6 @@ interface Props {
 // Hidden on desktop (the sticky sidebar card handles signups there).
 export default function MobileCtaSheet({
   ctaLabel = "Get instant access",
-  submitLabel = "Get instant access",
   sheetTitle = "Get instant access",
   sheetBody = "Enter your details and we'll send it straight to your inbox.",
 }: Props) {
@@ -63,7 +61,7 @@ export default function MobileCtaSheet({
             </button>
           </div>
           <p className="mb-4 mt-1.5 text-sm text-ink-muted">{sheetBody}</p>
-          <EmailForm submitLabel={submitLabel} />
+          <GhlForm instanceId="mobile" loadScript={false} />
           <p className="mt-3 text-center text-xs text-ink-muted">
             No spam. Unsubscribe anytime.
           </p>

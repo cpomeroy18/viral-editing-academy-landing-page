@@ -59,12 +59,11 @@ run `/brand-setup` and tell Claude — it bakes those choices in permanently.
 
 Edit copy by hand in `src/pages/*.astro`, or just ask Claude.
 
-## Connect your email (Kit)
+## Connect your email (Go High Level)
 
-Find your form ID in your Kit form's embed URL —
-`app.kit.com/forms/XXXXXXX/...` — and set `kitFormId` in `src/config.ts`
-(or let `/brand-setup` do it). Signups then flow into that form and whatever
-sequence you've connected to it.
+Grab the `src` URL from your GHL form's embed snippet and set `ghlFormUrl`
+in `src/config.ts` (or let `/brand-setup` do it). Signups then flow into
+that form and whatever automation you've connected to it.
 
 ## Deploy (free)
 

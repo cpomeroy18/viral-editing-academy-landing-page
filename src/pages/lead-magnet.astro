@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import EmailForm from "../components/EmailForm.tsx";
+import GhlForm from "../components/GhlForm.tsx";
 import Logo from "../components/Logo.astro";
 
 // ============================================================
@@ -11,7 +11,6 @@ const eyebrow = "Free Worksheet";
 const headline = "Turn your skills into an offer that sells";
 const subheadline =
   "Get the one-page worksheet that helps you package what you already know into a paid offer in an afternoon.";
-const submitLabel = "Send me the worksheet";
 const noSpamLine = "No spam. Unsubscribe anytime.";
 
 // Social-proof line under the form. Replace with your real proof.
@@ -58,7 +57,7 @@ const assetAlt = "Preview of the free worksheet";
 
           <!-- Form block -->
           <div class="mt-7 max-w-md">
-            <EmailForm client:load submitLabel={submitLabel} />
+            <GhlForm />
           </div>
 
           <p class="mt-3 text-sm text-ink-muted">{noSpamLine}</p>
