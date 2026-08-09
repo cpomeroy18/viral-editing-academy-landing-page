@@ -12,40 +12,32 @@ import SiteFooter from "../components/SiteFooter.astro";
 import ThemeCustomizer from "../components/ThemeCustomizer.astro";
 
 // ============================================================
-// WELCOME PAGE (post-optin thank-you) - Viral VFX Vault
-// Shared offer copy lives in src/data/offer-content.ts, shared with
-// offer.astro. Edit copy there; structure + behaviour below stay as-is.
-// The confirmation banner below is unique to this page.
+// ACADEMY PAGE (split-test variant of welcome.astro) - Viral Editing Academy
+// Leads with Viral Editing Academy as the flagship offer; Viral VFX
+// Vault is repositioned as a bonus. Reuses benefits/testimonials/core
+// FAQ from src/data/offer-content.ts (shared with welcome.astro and
+// offer.astro) - edit those there. Everything below marked "local" is
+// specific to this page only: headline/subhead, bonus stack order,
+// the 4-phase "how it works" section, the gif showcase, the extra
+// FAQ entry, and the checkout link.
 // ============================================================
 import {
   navLinks,
-  heroHeadline,
-  heroSubheadline,
-  heroBullets,
   proofStats,
   problems,
-  steps,
   studentWins,
-  deliverables,
   benefits,
   heroVideo,
   forYou,
   notForYou,
   wins,
-  checkoutDeliverables,
-  checkoutOptions,
   about,
   faqs,
-  pageTitle,
   ctaLabel,
-  heroEyebrow,
   heroSecondaryLabel,
   heroTrustLabel,
   problemEyebrow,
   problemHeading,
-  solutionEyebrow,
-  solutionHeading,
-  solutionSub,
   winsEyebrow,
   winsHeading,
   winsSub,
@@ -60,7 +52,6 @@ import {
   testimonialsEyebrow,
   testimonialsHeading,
   checkoutEyebrow,
-  checkoutTitle,
   checkoutTotalValue,
   checkoutBadges,
   testimonialIncentive,
@@ -69,15 +60,148 @@ import {
   faqEyebrow,
   faqHeading,
   finalCtaHeading,
-  finalCtaSub,
   finalCtaTrust,
   footerTagline,
-  stickyNote,
   SECTION,
   HEADING,
 } from "../data/offer-content";
 
-// --- POST-OPTIN CONFIRMATION BANNER (welcome.astro only) ---
+// --- LOCAL: checkout link for this variant (Viral Editing Academy Stripe link) ---
+const academyCheckoutUrl = "https://buy.stripe.com/eVq6oG6Yugst1oh1GDbo401";
+
+// --- LOCAL: page title, hero eyebrow, headline, subheadline ---
+const pageTitle = "Viral Editing Academy";
+const heroEyebrow = "Viral Editing Academy";
+const heroHeadline =
+  "Steal the exact edits that took me to 100K followers in 90 days";
+const heroSubheadline =
+  "No fancy gear, no editing background - just the same effects, tools, and process, broken down step by step so you can use them too.";
+
+// --- LOCAL: hero bullets (shared version's 4th bullet mentions a private
+// community, which doesn't exist yet - swapped for a real curriculum fact).
+const heroBullets = [
+  "Mobile-only editing, no expensive gear",
+  "Reverse-engineer any viral effect you see",
+  "A growing vault of trending FX tutorials",
+  "14 step-by-step tutorials, start to finish",
+];
+
+// --- LOCAL: bonus stack, reordered - Academy is the flagship, Vault is a bonus.
+// Same 6 items and same $822 total as the shared Vault-first stack, just
+// reordered and re-described. See offer-content.ts if the underlying
+// bonuses (Advanced FX / Transitions / CapCut / workshop) ever change -
+// keep those four in sync by hand since this array is local.
+const deliverables = [
+  { title: "Viral Editing Academy (Full Course)", desc: "The complete system, start to finish - foundations, the 5 core tools, tutorial-by-tutorial breakdowns, and how to remix any effect into your own.", value: "$299" },
+  { title: "Bonus: Viral VFX Vault", desc: "The searchable effects library - browse by difficulty, style, or use case whenever you need your next idea.", value: "$197" },
+  { title: "Bonus: Advanced Viral FX Course", desc: "Next-level effects and technique once you've got the basics down.", value: "$99" },
+  { title: "Bonus: Mobile Transitions Mini-Course", desc: "The transitions that make an edit feel seamless instead of choppy.", value: "$29" },
+  { title: "Bonus: CapCut Bootcamp", desc: "Every tool, shortcut, and setting worth knowing, so you're never fumbling mid-edit.", value: "$99" },
+  { title: "Bonus: \"5 Ideas Into 30 Posts\" Workshop", desc: "Turn one idea into a month of content instead of one post and a blank page tomorrow.", value: "$99" },
+];
+const checkoutDeliverables = deliverables.map((d) => ({ label: d.title, value: d.value }));
+const checkoutTitle = "Enroll in Viral Editing Academy";
+const checkoutOptions = [
+  { label: "One-time payment", price: "$97", note: "Lifetime access, pay once", featured: true, href: academyCheckoutUrl },
+];
+
+// --- LOCAL: final CTA copy (product-specific) + sticky bar note ---
+const finalCtaSub =
+  "Enroll in Viral Editing Academy and start creating edits that get attention, grow your following, and open doors - all with your phone.";
+const stickyNote = "Viral Editing Academy";
+
+// --- LOCAL: "How it works" - 5 real curriculum modules (replaces the
+// shared 3-step Vault search/tutorial/apply section, which doesn't
+// describe this offer). Module 2 and Module 5 reuse video clips already
+// converted for welcome/offer's benefits grid (Masking Explained.gif and
+// VEA - Viral directory 2.0.gif) since those are the most accurate real
+// visuals for that specific tool/feature. ---
+const modulesEyebrow = "The curriculum";
+const modulesHeading = "Five modules, start to finish";
+const modulesSub =
+  "Not a random pile of tutorials - a straight line from knowing nothing to reverse-engineering any effect you see.";
+const modules = [
+  {
+    title: "Module 1: Setup, Shooting & Editing Essentials",
+    desc: "Before you touch an effect, you get the basics locked in - shot right, lit right, ready to edit.",
+    highlights: [
+      "Gear that works on any budget - what's worth buying and what you can skip",
+      "The exact phone settings that make your footage look intentional, not accidental",
+      "Lighting and composition basics that grab attention before you've made a single cut",
+    ],
+    video: "/videos/module-1-phone-settings.mp4",
+    fit: "cover",
+  },
+  {
+    title: "Module 2: The 5 Foundational Tools of Viral Edits",
+    desc: "Almost every effect you've ever seen go viral comes down to the same five tools.",
+    highlights: [
+      "Match cut, masking, keyframes, speed ramping, and remove background",
+      "Each one broken down step by step, at your own pace",
+      "Learn these five once and you'll start spotting them in everything",
+    ],
+    video: "/videos/benefit-save-hours-editing.mp4",
+    fit: "cover",
+  },
+  {
+    title: "Module 3: Simple VFX Spice",
+    desc: "The small, quick-hit techniques that separate a flat video from one that pops.",
+    highlights: [
+      "Transitions, zoom effects, and camera angles you can drop into any edit",
+      "Nothing complicated - just the details most people skip",
+    ],
+    video: "/videos/module-3-finger-zoom.mp4",
+    fit: "contain",
+  },
+  {
+    title: "Module 4: Viral Effect Tutorials",
+    desc: "Now everything comes together - full walkthroughs, start to finish.",
+    highlights: [
+      "Every tutorial combines the tools from Modules 1-3 into one finished effect",
+      "Idea, shot, edit, post - the whole path, every time",
+    ],
+    video: "/videos/module-4-superhero-landing.mp4",
+    fit: "contain",
+  },
+  {
+    title: "Module 5: The Viral VFX Vault",
+    desc: "You've learned the tools. This is where you keep finding what to make next - forever.",
+    highlights: [
+      "The same searchable library behind the free FX Mini-Vault, fully unlocked",
+      "New effects added on an ongoing basis, browsable by difficulty, style, or use case",
+    ],
+    video: "/videos/benefit-never-run-out-of-ideas.mp4",
+    fit: "cover",
+  },
+];
+
+// --- LOCAL: gif showcase (converted from Gifs/ the same way as the
+// homepage benefits videos - see public/videos/ for the compressed
+// output, Gifs/ for the untouched originals). ---
+const showcaseEyebrow = "Real effects";
+const showcaseHeading = "Some of the effects you'll learn to create";
+// fit: "contain" for portrait-source clips (~9:16) so the full frame shows
+// letterboxed instead of getting cropped by object-cover in a 16:9 box;
+// "cover" only for academy-building-jump.mp4, which is already 16:9.
+// NOT FINAL - Colin plans to add more effect gifs here once he's reformatted
+// some clips to landscape. This grid should stay easy to extend, not treated
+// as a locked/complete set.
+const showcaseClips = [
+  { video: "/videos/academy-match-cut-hat.mp4", label: "Match cut", fit: "contain" },
+  { video: "/videos/academy-building-jump.mp4", label: "Object jump", fit: "cover" },
+  { video: "/videos/academy-clone-walk-by.mp4", label: "Walk-by transition", fit: "contain" },
+  { video: "/videos/academy-clone.mp4", label: "Clone effect", fit: "contain" },
+  { video: "/videos/academy-coffee-cup-match-cut.mp4", label: "Product match cut", fit: "contain" },
+];
+
+// --- LOCAL: core FAQ (shared) + one page-specific addition ---
+const academyFaqs = [
+  ...faqs,
+  { q: "What if I don't know my niche yet?", a: "You don't need one to start. These are editing and effect skills - they work no matter what you end up posting about. Most people figure out their niche by making content, not before." },
+];
+
+// --- POST-OPTIN CONFIRMATION BANNER (same pattern/copy as welcome.astro -
+// the underlying lead magnet doesn't change between split-test variants). ---
 const confirmationBanner =
   "You're in! Check your inbox — the FX Mini-Vault is on its way. While you're here...";
 ---
@@ -94,7 +218,7 @@ const confirmationBanner =
     </div>
   </div>
 
-  <SiteNav links={navLinks} ctaLabel={ctaLabel} />
+  <SiteNav links={navLinks} ctaLabel={ctaLabel} ctaHref={academyCheckoutUrl} />
 
   <Hero
     mode="split"
@@ -103,6 +227,7 @@ const confirmationBanner =
     subheadline={heroSubheadline}
     bullets={heroBullets}
     ctaLabel={ctaLabel}
+    ctaHref={academyCheckoutUrl}
     secondaryLabel={heroSecondaryLabel}
     secondaryHref="#how"
     trustLabel={heroTrustLabel}
@@ -134,25 +259,75 @@ const confirmationBanner =
     </div>
   </section>
 
-  <!-- SOLUTION -->
+  <!-- HOW IT WORKS (5 modules) -->
   <section id="how" class="bg-surface">
     <div class={SECTION}>
       <div class="mx-auto max-w-2xl text-center">
-        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{solutionEyebrow}</p>
-        <h2 class={`mt-3 ${HEADING}`}>{solutionHeading}</h2>
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{modulesEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{modulesHeading}</h2>
         <p class="mt-4 text-lg leading-relaxed text-ink-muted">
-          {solutionSub}
+          {modulesSub}
         </p>
       </div>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <div class="mx-auto mt-12 max-w-4xl space-y-8">
         {
-          steps.map((s, i) => (
-            <div class="rounded-card border border-line bg-card p-6">
-              <span class="flex h-9 w-9 items-center justify-center rounded-full bg-chip text-sm font-bold text-chip-ink">
-                {i + 1}
-              </span>
-              <h3 class="mt-4 text-lg font-bold text-ink">{s.title}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink-muted">{s.desc}</p>
+          modules.map((m) => (
+            <div class="grid items-center gap-0 overflow-hidden rounded-card border border-line bg-card md:grid-cols-[2fr_3fr]">
+              <video
+                src={m.video}
+                autoplay
+                muted
+                loop
+                playsinline
+                class={`aspect-video w-full ${
+                  m.fit === "contain" ? "bg-surface-2 object-contain" : "object-cover"
+                }`}
+              />
+              <div class="p-6">
+                <h3 class="text-lg font-bold text-ink">{m.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-ink-muted">{m.desc}</p>
+                <ul class="mt-4 space-y-2">
+                  {m.highlights.map((h) => (
+                    <li class="flex items-start gap-2.5 text-sm text-ink">
+                      <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-500">
+                        <svg class="h-3 w-3 text-brand-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4 10-12" />
+                        </svg>
+                      </span>
+                      <span class="leading-relaxed">{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- GIF SHOWCASE -->
+  <section class="bg-surface-2">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{showcaseEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{showcaseHeading}</h2>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          showcaseClips.map((c) => (
+            <div class="overflow-hidden rounded-card border border-line bg-card">
+              <video
+                src={c.video}
+                autoplay
+                muted
+                loop
+                playsinline
+                class={`aspect-video w-full ${
+                  c.fit === "contain" ? "bg-surface-2 object-contain" : "object-cover"
+                }`}
+              />
+              <p class="px-4 py-3 text-sm font-medium text-ink-muted">{c.label}</p>
             </div>
           ))
         }
@@ -210,9 +385,7 @@ const confirmationBanner =
                 muted
                 loop
                 playsinline
-                class={`aspect-video w-full ${
-                  b.fit === "contain" ? "bg-surface-2 object-contain" : "object-cover"
-                }`}
+                class="aspect-video w-full object-cover"
               />
               <div class="p-6">
                 <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500">
@@ -354,7 +527,7 @@ const confirmationBanner =
         <h2 class={`mt-3 ${HEADING}`}>{faqHeading}</h2>
       </div>
       <div class="mt-10">
-        <Faq items={faqs} />
+        <Faq items={academyFaqs} />
       </div>
     </div>
   </section>
@@ -369,7 +542,7 @@ const confirmationBanner =
         {finalCtaSub}
       </p>
       <div class="mt-8 flex justify-center">
-        <CtaButton label={ctaLabel} />
+        <CtaButton label={ctaLabel} href={academyCheckoutUrl} />
       </div>
       <p class="mt-4 text-xs uppercase tracking-wide text-ink-dark/50">
         {finalCtaTrust}
@@ -379,7 +552,7 @@ const confirmationBanner =
 
   <SiteFooter tagline={footerTagline} />
 
-  <StickyCta label={ctaLabel} note={stickyNote} />
+  <StickyCta label={ctaLabel} note={stickyNote} href={academyCheckoutUrl} />
 
   <ThemeCustomizer />
 </Base>

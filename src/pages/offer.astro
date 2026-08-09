@@ -194,7 +194,9 @@ import {
                 muted
                 loop
                 playsinline
-                class="aspect-video w-full object-cover"
+                class={`aspect-video w-full ${
+                  b.fit === "contain" ? "bg-surface-2 object-contain" : "object-cover"
+                }`}
               />
               <div class="p-6">
                 <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500">

@@ -11,9 +11,10 @@ interface NavItem {
 interface Props {
   links: NavItem[];
   ctaLabel?: string;
+  ctaHref?: string;
   showThemeToggle?: boolean;
 }
-const { links, ctaLabel = "Get access", showThemeToggle = false } = Astro.props;
+const { links, ctaLabel = "Get access", ctaHref, showThemeToggle = false } = Astro.props;
 ---
 
 <header class="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
@@ -35,7 +36,7 @@ const { links, ctaLabel = "Get access", showThemeToggle = false } = Astro.props;
       {showThemeToggle && <ThemeToggle />}
 
       <div class="hidden lg:block">
-        <CtaButton label={ctaLabel} size="md" />
+        <CtaButton label={ctaLabel} href={ctaHref} size="md" />
       </div>
 
       <!-- Mobile hamburger -->
@@ -78,7 +79,7 @@ const { links, ctaLabel = "Get access", showThemeToggle = false } = Astro.props;
         ))
       }
       <div class="mt-2">
-        <CtaButton label={ctaLabel} class="w-full" />
+        <CtaButton label={ctaLabel} href={ctaHref} class="w-full" />
       </div>
     </nav>
   </div>
