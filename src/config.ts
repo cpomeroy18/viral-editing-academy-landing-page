@@ -13,7 +13,7 @@ export const site = {
   ghlFormName: "FX Mini-Vault",
 
   // Where your offer-page CTAs send people (your Stripe / checkout link).
-  checkoutUrl: "https://buy.stripe.com/14AeVcfv03FH2sl1GDbo400",
+  checkoutUrl: "https://buy.stripe.com/6oU3cubeK4JL7MF851bo402",
 
   // Default colour theme for your site: "light" or "dark".
   // (Drop in <ThemeToggle /> if you want visitors to switch.)

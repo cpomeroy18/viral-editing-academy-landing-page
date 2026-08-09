@@ -97,14 +97,21 @@ export const deliverables = [
 ];
 
 // --- BENEFITS ---
+// video: compressed looping MP4s converted from source gifs in Gifs/
+// (raw gifs are 14-180MB each - unusable on a page as-is; these are
+// h264, muted, ~30-500KB apiece). See Gifs/ for the originals if any
+// need to be re-cut or re-picked.
 export const benefits = [
-  { title: "Skyrocket your views and following", desc: "Every effect in the Vault is already proven - real videos that pulled real views. Steal what works instead of guessing." },
-  { title: "Never run out of content ideas again", desc: "Open the Vault, pick an effect, shoot. No more staring at your phone wondering what to post next." },
-  { title: "Edit like a pro with just your phone", desc: "No laptop, no expensive software, no gear list. Everything's built for CapCut on your phone - the same way I do it." },
-  { title: "Save hours of editing time", desc: "Every tutorial skips the trial and error. You get the exact steps, not an afternoon spent reverse-engineering someone else's edit." },
-  { title: "Stand out in the scroll", desc: "Most people are posting the same flat talking-head video. A few seconds of the right effect is what stops the thumb." },
-  { title: "Stop guessing. Start growing.", desc: "You don't need a content strategy degree. You need a system you can actually follow - this is that system." },
+  { title: "Skyrocket your views and following", desc: "Every effect in the Vault is already proven - real videos that pulled real views. Steal what works instead of guessing.", video: "/videos/benefit-skyrocket-views.mp4" },
+  { title: "Never run out of content ideas again", desc: "Open the Vault, pick an effect, shoot. No more staring at your phone wondering what to post next.", video: "/videos/benefit-never-run-out-of-ideas.mp4" },
+  { title: "Edit like a pro with just your phone", desc: "No laptop, no expensive software, no gear list. Everything's built for CapCut on your phone - the same way I do it.", video: "/videos/benefit-edit-with-just-your-phone.mp4" },
+  { title: "Save hours of editing time", desc: "Every tutorial skips the trial and error. You get the exact steps, not an afternoon spent reverse-engineering someone else's edit.", video: "/videos/benefit-save-hours-editing.mp4" },
+  { title: "Stand out in the scroll", desc: "Most people are posting the same flat talking-head video. A few seconds of the right effect is what stops the thumb.", video: "/videos/benefit-stand-out.mp4" },
+  { title: "Stop guessing. Start growing.", desc: "You don't need a content strategy degree. You need a system you can actually follow - this is that system.", video: "/videos/benefit-stop-guessing.mp4" },
 ];
+
+// Hero split-mode looping video (converted from Gifs/Top 3 FX landscape 2.0.gif).
+export const heroVideo = "/videos/hero-top-3-fx.mp4";
 
 // --- WHO IT'S FOR ---
 export const forYou = [

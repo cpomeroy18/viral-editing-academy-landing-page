@@ -19,6 +19,8 @@ interface Props {
   /** split: right-hand image · vsl: video poster */
   image?: string;
   imageAlt?: string;
+  /** split: optional looping video (autoplay/muted/loop) to use instead of the static image */
+  mediaVideo?: string;
   /** vsl: where the play button links (your video URL) */
   videoUrl?: string;
 }
@@ -36,6 +38,7 @@ const {
   trustLabel,
   image,
   imageAlt = "",
+  mediaVideo,
   videoUrl,
 } = Astro.props;
 
@@ -59,14 +62,28 @@ const copy = {
         <HeroCopy align="left" {...copy} bullets={bullets} />
         <div class="hidden lg:block lg:pl-4">
           <div class="overflow-hidden rounded-card border border-line bg-surface-2 shadow-xl shadow-black/5">
-            <img
-              src={image ?? "https://picsum.photos/seed/ttb-offer-hero/1100/900"}
-              alt={imageAlt}
-              width="1100"
-              height="900"
-              class="h-auto w-full"
-              loading="eager"
-            />
+            {
+              mediaVideo ? (
+                <video
+                  src={mediaVideo}
+                  poster={image}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  class="h-auto w-full"
+                />
+              ) : (
+                <img
+                  src={image ?? "https://picsum.photos/seed/ttb-offer-hero/1100/900"}
+                  alt={imageAlt}
+                  width="1100"
+                  height="900"
+                  class="h-auto w-full"
+                  loading="eager"
+                />
+              )
+            }
           </div>
         </div>
       </div>
