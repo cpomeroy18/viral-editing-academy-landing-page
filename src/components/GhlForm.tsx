@@ -28,6 +28,7 @@ export default function GhlForm({
         src={formUrl}
         style={{ width: "100%", height: `${height}px`, border: "none", borderRadius: "3px" }}
         id={domId}
+        data-ghl-form
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"
         data-trigger-value=""

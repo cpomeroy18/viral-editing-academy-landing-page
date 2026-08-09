@@ -113,4 +113,68 @@ const assetAlt = "Preview of the FX Mini-Vault swipe file library.";
       </div>
     </main>
   </div>
+
+  <!-- ============================================================
+  Split-test: assigns a sticky "vault"/"academy" variant per visitor,
+  passes it into the GHL form as a query param (requires a "Hidden"
+  field with Query Parameter = "variant" configured on the GHL form
+  itself - not something this code can set), and redirects to the
+  matching offer page once GHL confirms the submission.
+
+  Submission detection: GHL's embed doesn't send a dedicated
+  "form submitted" event. Verified via a live test (see console log of
+  raw postMessage traffic) that it broadcasts a "set-sticky-contacts"
+  message on submit, and one of the two copies of that message
+  includes this iframe's own DOM id - that's what we match on below,
+  rather than guessing at an undocumented event name.
+  ============================================================ -->
+  <script is:inline>
+    (function () {
+      var KEY = "vea_variant";
+      var REDIRECTS = {
+        vault: "https://offer.colinpomeroy.com/welcome",
+        academy: "https://offer.colinpomeroy.com/academy",
+      };
+
+      var variant = localStorage.getItem(KEY);
+      if (variant !== "vault" && variant !== "academy") {
+        variant = Math.random() < 0.5 ? "vault" : "academy";
+        localStorage.setItem(KEY, variant);
+      }
+
+      var iframe = document.querySelector("[data-ghl-form]");
+      if (!iframe) return;
+
+      // Tag the iframe URL so a "Hidden" field (Query Parameter =
+      // "variant") on the GHL form captures it with the submission.
+      function tagIframe() {
+        if (!iframe.src) return;
+        var url = new URL(iframe.src, window.location.href);
+        url.searchParams.set("variant", variant);
+        iframe.src = url.toString();
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", tagIframe);
+      } else {
+        tagIframe();
+      }
+
+      // Redirect once GHL confirms the submission for this specific form.
+      var expectedId = iframe.id;
+      var redirected = false;
+
+      window.addEventListener("message", function (event) {
+        if (!event.origin || event.origin.indexOf("contentcreatormachine.com") === -1) return;
+        var data = event.data;
+        if (!Array.isArray(data) || data[0] !== "set-sticky-contacts") return;
+        var matchesThisForm = data.some(function (item) {
+          return typeof item === "string" && item.indexOf(expectedId) !== -1;
+        });
+        if (matchesThisForm && !redirected) {
+          redirected = true;
+          window.location.href = REDIRECTS[variant] || REDIRECTS.vault;
+        }
+      });
+    })();
+  </script>
 </Base>
