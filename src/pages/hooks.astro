@@ -1,0 +1,339 @@
+---
+import Base from "../layouts/Base.astro";
+
+// Standalone free-tool page, intentionally kept out of the sales funnel -
+// no SiteNav, no SiteFooter, no checkout CTA. Just the tool and a single
+// low-pressure text link to /offer at the bottom.
+const pageTitle = "Free Viral Hook Generator";
+const pageDescription =
+  "Answer 7 quick questions about your audience and get a ready-to-paste ChatGPT prompt that generates 10 scroll-stopping video hooks.";
+---
+
+<Base title={pageTitle} description={pageDescription}>
+  <section class="hook-tool">
+    <div class="wrap">
+      <div class="eyebrow">Free Tool</div>
+      <h1>Viral Hook Generator</h1>
+      <div class="sub">
+        Answer 7 quick questions about your audience. Your ChatGPT prompt builds itself below —
+        copy it, paste it in, get 10 hooks built for your content.
+      </div>
+
+      <div class="step-label">Step 1 — Your audience insights</div>
+
+      <div class="field">
+        <label for="pain">Common pain point</label>
+        <input type="text" id="pain" placeholder="e.g. not knowing what to post next" />
+      </div>
+      <div class="field">
+        <label for="myth">Big myth or lie in your niche</label>
+        <input type="text" id="myth" placeholder="e.g. you need expensive gear to look professional" />
+      </div>
+      <div class="field">
+        <label for="outcome">Major result your audience wants</label>
+        <input type="text" id="outcome" placeholder="e.g. growing a following without burning out" />
+      </div>
+      <div class="field">
+        <label for="lesson">Surprising lesson you learned</label>
+        <input type="text" id="lesson" placeholder="e.g. consistency beats perfection every time" />
+      </div>
+      <div class="field">
+        <label for="truth">Hidden truth nobody talks about</label>
+        <input type="text" id="truth" placeholder="e.g. most viral videos are remixes, not originals" />
+      </div>
+      <div class="field">
+        <label for="advice">Advice you wish you had earlier</label>
+        <input type="text" id="advice" placeholder="e.g. post before it feels ready" />
+      </div>
+      <div class="field">
+        <label for="fast">Fast result you can deliver</label>
+        <input type="text" id="fast" placeholder="e.g. a scroll-stopping hook in one line" />
+      </div>
+
+      <div class="step-label">Step 2 — Copy this into ChatGPT</div>
+
+      <div class="prompt-box" id="promptBox"></div>
+
+      <div class="copy-row">
+        <button class="copy-btn" id="copyBtn">Copy prompt</button>
+        <span class="copy-confirm" id="copyConfirm">Copied</span>
+      </div>
+
+      <div class="footer-note">Fill in as many or as few as you want — the prompt updates as you type.</div>
+
+      <div class="soft-link">
+        Want more help going viral? <a href="/offer">Check out the Viral VFX Vault →</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Tool's own palette/styling, kept as-is (already matches the site's
+     dark brand tokens) - scoped to .hook-tool instead of `body` so it
+     doesn't bleed into the shared header/footer chrome. */
+  .hook-tool {
+    --charcoal: #0f0f14;
+    --charcoal-2: #121216;
+    --red: #ff2d55;
+    --red-dark: #c81d45;
+    --cyan: #00d1ff;
+    --off-white: #e6e6eb;
+    --off-white-warm: #f2f2f5;
+
+    background: var(--charcoal);
+    color: var(--off-white);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    line-height: 1.5;
+  }
+
+  .hook-tool * {
+    box-sizing: border-box;
+  }
+
+  .hook-tool .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hook-tool .eyebrow {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .hook-tool h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .hook-tool .sub {
+    color: #9b9aa3;
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  .hook-tool .step-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 32px 0 16px 0;
+  }
+
+  .hook-tool .field {
+    margin-bottom: 18px;
+  }
+
+  .hook-tool label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--off-white);
+  }
+
+  .hook-tool input[type="text"] {
+    width: 100%;
+    background: var(--charcoal-2);
+    border: 1px solid #2a2a32;
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--off-white-warm);
+    font-size: 15px;
+    transition: border-color 0.15s ease;
+  }
+
+  .hook-tool input[type="text"]:focus {
+    outline: none;
+    border-color: var(--cyan);
+  }
+
+  .hook-tool input[type="text"]::placeholder {
+    color: #55555f;
+  }
+
+  .hook-tool .prompt-box {
+    background: var(--charcoal-2);
+    border: 1px solid #2a2a32;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--off-white-warm);
+    white-space: pre-wrap;
+    min-height: 140px;
+  }
+
+  .hook-tool .placeholder-text {
+    color: #55555f;
+  }
+
+  .hook-tool .fill-token {
+    color: var(--cyan);
+  }
+
+  .hook-tool .copy-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .hook-tool button.copy-btn {
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .hook-tool button.copy-btn:hover {
+    background: var(--red-dark);
+  }
+
+  .hook-tool button.copy-btn:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+  }
+
+  .hook-tool .copy-confirm {
+    font-size: 13px;
+    color: var(--cyan);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .hook-tool .copy-confirm.show {
+    opacity: 1;
+  }
+
+  .hook-tool .footer-note {
+    margin-top: 28px;
+    font-size: 13px;
+    color: #55555f;
+  }
+
+  .hook-tool .soft-link {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #55555f;
+  }
+
+  .hook-tool .soft-link a {
+    color: var(--off-white);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .hook-tool .soft-link a:hover {
+    color: var(--cyan);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hook-tool * {
+      transition: none !important;
+    }
+  }
+
+  /* Mobile: tighten section padding and let the copy row wrap instead
+     of the button/confirm text crowding on narrow screens. */
+  @media (max-width: 480px) {
+    .hook-tool {
+      padding: 28px 16px;
+    }
+
+    .hook-tool h1 {
+      font-size: 24px;
+    }
+
+    .hook-tool .copy-row {
+      flex-wrap: wrap;
+    }
+
+    .hook-tool button.copy-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const ids = ["pain", "myth", "outcome", "lesson", "truth", "advice", "fast"];
+  const labels: Record<string, string> = {
+    pain: "Common pain point",
+    myth: "Industry myth",
+    outcome: "Desired outcome",
+    lesson: "Personal lesson",
+    truth: "Hidden truth",
+    advice: "Advice I wish I had earlier",
+    fast: "Fast result",
+  };
+  const placeholders: Record<string, string> = {
+    pain: "[not filled in yet]",
+    myth: "[not filled in yet]",
+    outcome: "[not filled in yet]",
+    lesson: "[not filled in yet]",
+    truth: "[not filled in yet]",
+    advice: "[not filled in yet]",
+    fast: "[not filled in yet]",
+  };
+
+  const promptBox = document.getElementById("promptBox") as HTMLDivElement;
+  const copyBtn = document.getElementById("copyBtn") as HTMLButtonElement;
+  const copyConfirm = document.getElementById("copyConfirm") as HTMLSpanElement;
+
+  function escapeHtml(str: string) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function buildPrompt() {
+    const lines = ["Create 10 viral hook ideas for my content. Use these audience insights:"];
+    const plainLines = ["Create 10 viral hook ideas for my content. Use these audience insights:"];
+
+    ids.forEach((id) => {
+      const val = (document.getElementById(id) as HTMLInputElement).value.trim();
+      const display = val || placeholders[id];
+      lines.push(
+        `- ${labels[id]}: ${
+          val
+            ? `<span class="fill-token">${escapeHtml(display)}</span>`
+            : `<span class="placeholder-text">${escapeHtml(display)}</span>`
+        }`
+      );
+      plainLines.push(`- ${labels[id]}: ${display}`);
+    });
+
+    lines.push("Make the hooks emotional, curiosity-driven, and highly shareable.");
+    plainLines.push("Make the hooks emotional, curiosity-driven, and highly shareable.");
+
+    promptBox.innerHTML = lines.join("\n");
+    promptBox.dataset.plainText = plainLines.join("\n");
+  }
+
+  ids.forEach((id) => {
+    document.getElementById(id)?.addEventListener("input", buildPrompt);
+  });
+
+  copyBtn.addEventListener("click", () => {
+    const text = promptBox.dataset.plainText || "";
+    navigator.clipboard.writeText(text).then(() => {
+      copyConfirm.classList.add("show");
+      setTimeout(() => copyConfirm.classList.remove("show"), 1800);
+    });
+  });
+
+  buildPrompt();
+</script>
