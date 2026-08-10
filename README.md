@@ -53,7 +53,7 @@ run `/brand-setup` and tell Claude — it bakes those choices in permanently.
 | Page | Route | Best for |
 |---|---|---|
 | Offer page | `/` | A full sales page with pricing + FAQ (the home page) |
-| Lead magnet | `/lead-magnet` | A free download / email opt-in |
+| Lead magnet | `/fx-mini-vault` | A free download / email opt-in |
 | Sales letter | `/sales-letter` | A story-driven, long-form pitch |
 | Showcase | `/showcase` | Preview of the hero layouts (internal) |
 

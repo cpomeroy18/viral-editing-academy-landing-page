@@ -18,7 +18,7 @@ Code) and travel with the repo.
 ## Structure
 
 - `src/pages/` — the routes. `index.astro` = the **offer page** (home `/`),
-  `lead-magnet.astro` = opt-in, `sales-letter.astro`, `showcase.astro` (hero
+  `fx-mini-vault.astro` = opt-in, `sales-letter.astro`, `showcase.astro` (hero
   gallery + the Customise Theme panel preview).
 - `src/components/` — reusable pieces (`Hero.astro` + `HeroCopy.astro`,
   `CheckoutCard`, `StudentWins`, `GhlForm.tsx` → Go High Level,
