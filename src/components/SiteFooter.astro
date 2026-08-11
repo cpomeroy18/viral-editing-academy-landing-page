@@ -5,8 +5,12 @@ import { site } from "../config";
 
 interface Props {
   tagline?: string;
+  /** Override the logo's displayed name (defaults to site.name). */
+  logoName?: string;
+  /** Logo link target. Pass `false` to disable the link entirely. */
+  logoHref?: string | false;
 }
-const { tagline } = Astro.props;
+const { tagline, logoName, logoHref } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
@@ -15,7 +19,7 @@ const year = new Date().getFullYear();
     class="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between"
   >
     <div class="flex flex-col items-center gap-3 sm:items-start">
-      <Logo />
+      <Logo name={logoName} href={logoHref} />
       {tagline && <p class="text-sm text-ink-muted">{tagline}</p>}
     </div>
     <nav class="flex items-center gap-6 text-sm">

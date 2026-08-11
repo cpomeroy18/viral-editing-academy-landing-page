@@ -78,7 +78,7 @@ import {
 ---
 
 <Base title={pageTitle} description={heroSubheadline}>
-  <SiteNav links={navLinks} ctaLabel={ctaLabel} />
+  <SiteNav links={navLinks} ctaLabel={ctaLabel} logoName={pageTitle} logoHref={false} />
 
   <Hero
     mode="split"
@@ -361,7 +361,7 @@ import {
     </div>
   </section>
 
-  <SiteFooter tagline={footerTagline} />
+  <SiteFooter tagline={footerTagline} logoName={pageTitle} logoHref={false} />
 
   <StickyCta label={ctaLabel} note={stickyNote} />
 
