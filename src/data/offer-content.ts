@@ -18,14 +18,14 @@ export const navLinks = [
 
 // --- HERO ---
 export const heroHeadline =
-  'Learn to <span class="text-brand-500">edit viral content</span> with just your phone';
+  'Turn your phone into a <span class="text-brand-500">scroll-stopping content machine</span>';
 export const heroSubheadline =
-  "A step-by-step course that turns your iPhone into a scroll-stopping content machine, so you can grow your following, land brand deals, and finally make content people can't scroll past.";
+  "Unlock the Viral VFX Vault and start creating edits that get attention, grow your following, and earn you more money - all with your phone.";
 export const heroBullets = [
   "Mobile-only editing, no expensive gear",
-  "Reverse-engineer any viral effect you see",
-  "A growing vault of trending FX tutorials",
-  "Real feedback inside a private creator community",
+  "Easily find the viral effects people actually use to go viral, all in one sortable place",
+  "Learn exactly how to recreate each effect, with a tutorial and tool breakdown for every one",
+  "185+ proven viral effects and growing",
 ];
 
 // Real background stats on Colin (the instructor) - swap if you'd rather
@@ -114,7 +114,7 @@ export const benefits = [
 ];
 
 // Hero split-mode looping video (converted from Gifs/Top 3 FX landscape 2.0.gif).
-export const heroVideo = "/videos/hero-top-3-fx.mp4";
+export const heroVideo = "/videos/hero-top-3-fx-v4.mp4";
 
 // --- WHO IT'S FOR ---
 export const forYou = [
