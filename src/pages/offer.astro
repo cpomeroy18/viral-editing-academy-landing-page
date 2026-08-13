@@ -67,14 +67,16 @@ import {
   aboutHeading,
   faqEyebrow,
   faqHeading,
-  finalCtaHeading,
   finalCtaSub,
   finalCtaTrust,
-  footerTagline,
   stickyNote,
   SECTION,
   HEADING,
 } from "../data/offer-content";
+
+// --- LOCAL: Final CTA heading (shared version duplicates the hero
+// headline; academy.astro still uses the shared one, untouched). ---
+const finalCtaHeading = "Learn to edit viral content with just your phone";
 ---
 
 <Base title={pageTitle} description={heroSubheadline}>
@@ -357,9 +359,6 @@ import {
       </div>
       <p class="mt-4 text-xs uppercase tracking-wide text-ink-dark/50">
         {finalCtaTrust}
-      </p>
-      <p class="mt-6 text-sm font-medium text-ink-dark/60">
-        {footerTagline}
       </p>
     </div>
   </section>
