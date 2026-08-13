@@ -1,13 +1,15 @@
 ---
 import Base from "../layouts/Base.astro";
 import GhlForm from "../components/GhlForm.tsx";
-import Logo from "../components/Logo.astro";
 
 // ============================================================
 // LEAD MAGNET TEMPLATE - fill in the blanks
 // Swap the copy below for your offer. Structure stays as-is.
 // ============================================================
 const eyebrow = "Free Swipe File";
+// Separate from `eyebrow` (that's on-page badge copy) - this is what shows
+// in the browser tab and social share previews.
+const pageTitle = "FX Mini-Vault";
 const headline = "Steal the exact effects behind today's viral videos";
 const subheadline =
   "Get the FX Mini-Vault — a free swipe file of proven viral video effects, tagged by use case, difficulty, and the tools behind each one.";
@@ -27,14 +29,9 @@ const assetImage = "/images/fx-mini-vault-cover.jpg";
 const assetAlt = "Preview of the FX Mini-Vault swipe file library.";
 ---
 
-<Base title={eyebrow} description={subheadline}>
-  <!-- Full-height shell: header + hero fill exactly one viewport (no scroll on desktop) -->
+<Base title={pageTitle} description={subheadline}>
+  <!-- Full-height shell: hero fills exactly one viewport (no scroll on desktop) -->
   <div class="flex min-h-[100dvh] flex-col">
-    <!-- Brand bar -->
-    <header class="mx-auto w-full max-w-6xl px-6 py-6">
-      <Logo />
-    </header>
-
     <!-- Opt-in hero (asymmetric split) -->
     <main class="mx-auto flex w-full max-w-6xl flex-1 items-center px-6 py-6">
       <div class="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-16">
