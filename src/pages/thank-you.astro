@@ -1,0 +1,48 @@
+---
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+import TextLink from "../components/TextLink.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+// ============================================================
+// THANK YOU PAGE - dead-end confirmation, not a sales page.
+// No pricing, no CTA, no nav back into the funnel. Header/footer
+// chrome matches welcome.astro/offer.astro but with no nav links
+// and no CTA button - built directly here instead of reusing
+// SiteNav.astro, since that component always renders a CTA button
+// and nav-link slot with no way to hide them.
+// ============================================================
+const pageTitle = "You're In!";
+const headline = "You're in!";
+const purchaseLine = "Thank you for your purchase.";
+const body = "Check your email for your access link.";
+const supportEmail = "colin@colinpomeroy.com";
+---
+
+<Base title={pageTitle} description={body}>
+  <header class="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center px-6 py-4">
+      <Logo href={false} />
+    </div>
+  </header>
+
+  <main class="mx-auto flex min-h-[70dvh] max-w-xl flex-col items-center justify-center px-6 py-20 text-center">
+    <h1 class="text-4xl font-extrabold tracking-tight text-ink md:text-5xl">
+      {headline}
+    </h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-muted">
+      {purchaseLine}
+    </p>
+    <p class="mt-2 text-lg leading-relaxed text-ink-muted">
+      {body}
+    </p>
+    <p class="mt-8 text-sm text-ink-muted">
+      Questions? Reach out anytime at{" "}
+      <TextLink href={`mailto:${supportEmail}`} class="font-medium text-ink">
+        {supportEmail}
+      </TextLink>
+    </p>
+  </main>
+
+  <SiteFooter logoHref={false} />
+</Base>
