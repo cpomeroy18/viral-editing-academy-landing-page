@@ -12,8 +12,8 @@ export const site = {
   ghlFormUrl: "https://link.contentcreatormachine.com/widget/form/dG6BvJLmd32em6tFH0rr",
   ghlFormName: "FX Mini-Vault",
 
-  // Where your offer-page CTAs send people (your Stripe / checkout link).
-  checkoutUrl: "https://buy.stripe.com/6oU3cubeK4JL7MF851bo402",
+  // Where your offer-page CTAs send people (your GHL payment link).
+  checkoutUrl: "https://link.contentcreatormachine.com/payment-link/6a7e5f9dc8cc9a2ce7267e92",
 
   // Default colour theme for your site: "light" or "dark".
   // (Drop in <ThemeToggle /> if you want visitors to switch.)
