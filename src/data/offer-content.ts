@@ -25,7 +25,7 @@ export const heroBullets = [
   "Mobile-only editing, no expensive gear",
   "Easily find the viral effects people actually use to go viral, all in one sortable place",
   "Learn exactly how to recreate each effect, with a tutorial and tool breakdown for every one",
-  "185+ proven viral effects and growing",
+  "200+ proven viral effects and growing",
 ];
 
 // Real background stats on Colin (the instructor) - swap if you'd rather
@@ -48,7 +48,7 @@ export const problems = [
 // --- SOLUTION / HOW IT WORKS ---
 export const steps = [
   { title: "Find the right effect", desc: "Search the Vault by difficulty, style, use case, or just the hook that caught your eye. If you've seen it go viral, it's probably in here." },
-  { title: "Follow the tutorial", desc: "Every effect comes with a step-by-step breakdown - no guessing, no piecing it together from three different YouTube videos." },
+  { title: "Follow the tutorial", desc: "Each effect is broken down by the tool it uses - a full step-by-step tutorial for that tool, so you know exactly how it's done." },
   { title: "Apply it to your next video", desc: "Shoot it, edit it, post it. That's the whole system." },
 ];
 
@@ -162,6 +162,7 @@ export const about = {
 export const faqs = [
   { q: "What exactly is the Viral VFX Vault?", a: "It's a searchable library of proven viral video effects. Every effect is broken down step-by-step - the exact tools, the exact settings, done on your phone - so you're never guessing how something was made." },
   { q: "Do I need any editing experience?", a: "No. Every tutorial assumes you're starting from zero. If you can tap record on your phone, you can follow along." },
+  { q: "Does every effect have its own dedicated tutorial?", a: "Effects are organized by the core tool used to create them - a small set of tools, each with a complete, dedicated tutorial. So instead of hundreds of one-off explainer videos, you get deep, proper breakdowns of the tools themselves, which apply across many effects. Some effects also include extra notes on top of the core tutorial." },
   { q: "Will this work for my niche?", a: "Yes. These are editing and effect skills, not niche-specific tricks. Doesn't matter if you're a creator, a coach, or a business owner posting your own content - the technique transfers." },
   { q: "Can't I just learn this for free on YouTube or TikTok?", a: "You can find pieces of it, sure. But free tutorials are usually rushed, skip steps, or leave out the one detail that actually makes the effect work. Everything here is organized and built to be followed start to finish - not pieced together from ten different videos." },
   { q: "What do I actually get inside?", a: "The Vault itself, plus five bonuses - the full Viral Editing Academy course, the Advanced Viral FX course, a mobile transitions mini-course, a CapCut bootcamp, and the \"5 Ideas Into 30 Posts\" workshop. Full breakdown above, with what each is worth on its own." },
@@ -178,12 +179,17 @@ export const heroSecondaryLabel = "See how it works";
 export const heroTrustLabel = "Backed by real student results";
 
 export const problemEyebrow = "The problem";
-export const problemHeading = "Effort isn't the problem. Your edits are.";
+export const problemHeading = "Struggling to get views, no matter what you try?";
+
+// --- SOLUTION BRIDGE (short transition section, no eyebrow) ---
+export const bridgeHeading = "Your content isn't bad. It's just not stopping anyone.";
+export const bridgeSub =
+  "Every video you've posted probably had something worth watching. It just didn't stop the scroll. The Vault fixes that - proven viral effects that actually make people stop.";
 
 export const solutionEyebrow = "How it works";
-export const solutionHeading = "Three steps. That's the whole system.";
-export const solutionSub =
-  "No filler lessons, no 40-minute videos to sit through - just find an effect, follow the steps, and post.";
+export const solutionHeading = "Stop the scroll in three steps.";
+export const solutionSub = "Find a viral effect, follow the steps, post.";
+export const solutionBanner = "/videos/how-it-works-teleport-banner.mp4";
 
 export const winsEyebrow = "Student wins";
 export const winsHeading = "Results from real students";
@@ -191,6 +197,24 @@ export const winsSub = "Real creators, real edits, real results - built with the
 
 export const includedEyebrow = "Everything included";
 export const includedHeading = "Here's exactly what you get";
+
+// --- OBJECTION HANDLING ---
+export const objectionEyebrow = "Yeah, but...";
+export const objectionHeading = "Let's address the excuses";
+export const objectionHandling = [
+  {
+    q: "I don't have expensive gear or editing software.",
+    a: "Neither do I. Every effect in the Vault is built for CapCut, on your phone - the same setup I use for every video I post.",
+  },
+  {
+    q: "I'm not that creative.",
+    a: "You don't need to be. Effects are organized by the tool used to make them - a handful of core mobile tools, each with its own full tutorial - so you're following a proven method, not inventing one from scratch.",
+  },
+  {
+    q: "I've never edited before.",
+    a: "No worries - the Vault comes with Viral Editing Academy free, and it walks you from zero experience to proficient, showing you exactly how to use each tool, step by step.",
+  },
+];
 
 export const benefitsEyebrow = "The benefits";
 export const benefitsHeading = "What actually changes when you use it";

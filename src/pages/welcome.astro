@@ -43,14 +43,20 @@ import {
   heroTrustLabel,
   problemEyebrow,
   problemHeading,
+  bridgeHeading,
+  bridgeSub,
   solutionEyebrow,
   solutionHeading,
   solutionSub,
+  solutionBanner,
   winsEyebrow,
   winsHeading,
   winsSub,
   includedEyebrow,
   includedHeading,
+  objectionEyebrow,
+  objectionHeading,
+  objectionHandling,
   benefitsEyebrow,
   benefitsHeading,
   whoEyebrow,
@@ -136,6 +142,14 @@ const confirmationBanner =
     </div>
   </section>
 
+  <!-- SOLUTION BRIDGE (short transition, no eyebrow) -->
+  <section class="bg-surface">
+    <div class="mx-auto max-w-2xl px-6 py-12 text-center md:py-16">
+      <h2 class={HEADING}>{bridgeHeading}</h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-muted">{bridgeSub}</p>
+    </div>
+  </section>
+
   <!-- SOLUTION -->
   <section id="how" class="bg-surface">
     <div class={SECTION}>
@@ -146,7 +160,17 @@ const confirmationBanner =
           {solutionSub}
         </p>
       </div>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <div class="mt-10 overflow-hidden rounded-card border border-line">
+        <video
+          src={solutionBanner}
+          autoplay
+          muted
+          loop
+          playsinline
+          class="aspect-video w-full object-cover"
+        />
+      </div>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
         {
           steps.map((s, i) => (
             <div class="rounded-card border border-line bg-card p-6">
@@ -188,6 +212,26 @@ const confirmationBanner =
                 </span>
               </div>
               <p class="mt-2 max-w-2xl text-base leading-relaxed text-ink-muted">{d.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTION HANDLING -->
+  <section class="bg-surface">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-bold uppercase tracking-wide text-brand-600">{objectionEyebrow}</p>
+        <h2 class={`mt-3 ${HEADING}`}>{objectionHeading}</h2>
+      </div>
+      <div class="mx-auto mt-12 max-w-3xl space-y-6">
+        {
+          objectionHandling.map((o) => (
+            <div class="rounded-card border border-line bg-card p-6">
+              <p class="text-lg font-bold text-ink">&#8220;{o.q}&#8221;</p>
+              <p class="mt-2 text-base leading-relaxed text-ink-muted">{o.a}</p>
             </div>
           ))
         }
