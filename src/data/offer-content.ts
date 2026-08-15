@@ -28,13 +28,14 @@ export const heroBullets = [
   "200+ proven viral effects and growing",
 ];
 
-// Real background stats on Colin (the instructor) - swap if you'd rather
-// lead with course-level numbers once you have them.
+// Vault-product stats (not Colin's personal background - see git history
+// if that framing is ever wanted back).
 export const proofStats = [
-  { value: "100K+", label: "IG followers grown in 90 days" },
-  { value: "10+", label: "years creating video content" },
-  { value: "5", label: "core mobile editing tools taught" },
-  { value: "$0", label: "extra gear required" },
+  { value: "200+", label: "Proven viral effects" },
+  { value: "$0", label: "Extra gear required" },
+  { value: "Lifetime", label: "Access, no subscription" },
+  { value: "Any Niche", label: "Works for any content style" },
+  { value: "Growing", label: "New effects added regularly" },
 ];
 
 // --- PROBLEM ---
@@ -208,10 +209,16 @@ export const checkoutOptions = [
 // --- ABOUT ---
 // role: "Founder, Viral Editing Academy" refers to the parent brand/company,
 // not the product - left as-is.
+//
+// bio is one paragraph, generic enough to be safe on welcome/offer/academy
+// alike. bio2 explicitly frames the Vault as primary and Academy as the
+// free-included bonus - the opposite of academy.astro's own positioning -
+// so it's only wired into welcome.astro/offer.astro's markup, not academy's.
 export const about = {
   name: "Colin Pomeroy",
   role: "Founder, Viral Editing Academy",
-  bio: "I'm a video creator with 10+ years of experience. After years of trial and error making content that got zero traction, I discovered how to use mobile VFX and creative editing to consistently capture attention - growing to 100K+ Instagram followers and landing brand deals, all from my phone. Viral Editing Academy is the exact system I use, taught step-by-step.",
+  bio: "I'm a video creator with 10+ years of experience. After years of trial and error making content that got zero traction, I discovered how to use mobile VFX and creative editing to consistently capture attention - growing to 100K+ Instagram followers and landing brand deals, all with tools you can use right from your phone.",
+  bio2: "The Viral VFX Vault is what I wish I had back then - every effect that actually works, already found, organized, and broken down. Viral Editing Academy (included free) is the exact system I use to put those effects to work, taught step-by-step.",
   image: "/images/about-colin.jpg",
 };
 

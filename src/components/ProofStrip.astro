@@ -17,11 +17,11 @@ const isDark = tone === "dark";
 
 <section class={isDark ? "bg-surface-dark text-ink-dark" : "bg-surface-2 text-ink"}>
   <div class="mx-auto max-w-6xl px-6 py-10">
-    <div class="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-6">
       {
         stats.map((s) => (
-          <div class="text-center">
-            <div class="text-3xl font-extrabold tracking-tight md:text-4xl">
+          <div class="w-[42%] text-center sm:w-auto sm:min-w-[120px]">
+            <div class="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">
               {s.value}
             </div>
             <div
