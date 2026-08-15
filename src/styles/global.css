@@ -218,8 +218,15 @@ html {
 
 /* --- Brutalist --- sharp corners, hard black/white borders, red accent */
 [data-theme-preset="brutalist"] {
-  --brand-hue: 25;            /* red */
-  --brand-chroma: 1.2;
+  --brand-hue: 17.9;          /* kept for the derived steps (chips, tints) */
+  --brand-chroma: 1.49;
+  /* Pixel-exact #FF2D55, set directly rather than derived - same pattern
+     as the "linen" preset above. 600/400 are hand-picked darker/lighter
+     steps at the same hue (hover state and light-accent-on-dark-band
+     roles respectively), not derived from the formula either. */
+  --color-brand-500: #FF2D55;    /* buttons, checks, stars */
+  --color-brand-600: #E83A54;    /* eyebrow / section labels, hover state */
+  --color-brand-400: #FF6C80;    /* light accent on dark bands */
   --color-brand-ink: #ffffff; /* white on red buttons (light) */
   --radius-control: 0.5rem;   /* softened from brutalism default per brand choice */
   --radius-card: 0.5rem;
@@ -412,4 +419,27 @@ h3 {
   font-family: var(--font-display);
   font-weight: var(--heading-weight);
   text-transform: var(--heading-transform);
+}
+
+/* Logo marquee (e.g. "Trusted by" bar) - track holds the logo set
+   twice back to back; animating to -50% loops seamlessly regardless
+   of how many logos or how wide they are. */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee-scroll 28s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }

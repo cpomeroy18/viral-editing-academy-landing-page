@@ -183,7 +183,7 @@ export const forYou = [
 ];
 export const notForYou = [
   "You want someone else to edit your videos for you.",
-  "You're not making content at all right now.",
+  "You're not willing to put in the work to create content.",
   "You need a full production / camera-and-software workflow.",
   "You're looking for a guaranteed-overnight-virality gimmick.",
   "You're not willing to put in the reps to build the skill.",
@@ -234,6 +234,25 @@ export const ctaLabel = "Enroll now - $97"; // shared by nav, hero, final CTA + 
 export const heroEyebrow = "Viral VFX Vault";
 export const heroSecondaryLabel = "See how it works";
 export const heroTrustLabel = "Backed by real student results";
+
+// --- TRUSTED BY (brand partnership logo marquee) ---
+// Logos are cropped-to-content + normalized to a consistent height
+// (see public/images/brand-logos/), sourced from Brand Logos/ at the
+// project root (not deployed - gitignored raw source, same pattern
+// as Images/).
+export const trustedByLabel = "Trusted by";
+export const trustedByLogos = [
+  { src: "/images/brand-logos/adobe.png", alt: "Adobe" },
+  { src: "/images/brand-logos/capcut.png", alt: "CapCut" },
+  { src: "/images/brand-logos/disney.png", alt: "Disney" },
+  { src: "/images/brand-logos/marvel.png", alt: "Marvel" },
+  { src: "/images/brand-logos/nbc.png", alt: "NBC" },
+  { src: "/images/brand-logos/dell.png", alt: "Dell" },
+  { src: "/images/brand-logos/cargurus.png", alt: "CarGurus" },
+  { src: "/images/brand-logos/filmora.png", alt: "Filmora" },
+  { src: "/images/brand-logos/circlek.png", alt: "Circle K" },
+  { src: "/images/brand-logos/manychat.png", alt: "ManyChat" },
+];
 
 export const problemEyebrow = "The problem";
 export const problemHeading = "Struggling to get views, no matter what you try?";

@@ -40,6 +40,8 @@ import {
   heroEyebrow,
   heroSecondaryLabel,
   heroTrustLabel,
+  trustedByLabel,
+  trustedByLogos,
   problemEyebrow,
   problemHeading,
   bridgeHeading,
@@ -101,6 +103,26 @@ const finalCtaHeading = "Learn to edit viral content with just your phone";
     image="https://picsum.photos/seed/vea-hero/1100/900"
     mediaVideo={heroVideo}
   />
+
+  <!-- TRUSTED BY (auto-scrolling logo marquee) -->
+  <!-- bg-white / text-black are intentional, not tokens - this band is a
+       full-bleed white strip regardless of site theme, since several logos
+       are black/dark-mark on transparent (CapCut, Disney, NBC's wordmark)
+       and need a guaranteed-light background to stay legible. -->
+  <section class="bg-white py-10">
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-center text-xs font-bold uppercase tracking-wide text-black/60">{trustedByLabel}</p>
+      <div class="relative mt-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div class="flex w-max animate-marquee items-center gap-12">
+          {
+            [...trustedByLogos, ...trustedByLogos].map((logo) => (
+              <img src={logo.src} alt={logo.alt} class="h-10 w-auto shrink-0 object-contain" loading="lazy" />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
 
   <ProofStrip stats={proofStats} />
 

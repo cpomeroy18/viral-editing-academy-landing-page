@@ -23,5 +23,9 @@ pnpm-debug.log*
 # raw source photos (staging folder; optimized copies live in public/images/)
 /Images/
 
+# raw brand partnership logos (staging folder; cropped/normalized copies
+# live in public/images/brand-logos/)
+/Brand Logos/
+
 # jetbrains setting folder
 .idea/
