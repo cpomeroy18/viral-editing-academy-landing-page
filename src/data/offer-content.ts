@@ -172,7 +172,7 @@ export const benefits = [
   { title: "Never run out of content ideas again", desc: "Open the Vault, pick an effect, shoot. No more staring at your phone wondering what to post next.", video: "/videos/included-vault-3.0.mp4", fit: "cover" },
   { title: "Edit like a pro with just your phone", desc: "No laptop, no expensive software, no gear list. Everything's built for CapCut on your phone - the same way I do it.", video: "/videos/benefit-edit-with-just-your-phone.mp4", fit: "cover" },
   { title: "Save hours of editing time", desc: "Every tutorial skips the trial and error. You get the exact steps, not an afternoon spent reverse-engineering someone else's edit.", video: "/videos/benefit-save-hours-editing.mp4", fit: "cover" },
-  { title: "Stand out in the scroll", desc: "Most people are posting the same flat talking-head video. A few seconds of the right effect is what stops the thumb.", video: "/videos/benefit-stand-out.mp4", fit: "contain" },
+  { title: "Stand out in the scroll", desc: "Most people are posting the same flat talking-head video. A few seconds of the right effect is what stops the thumb.", video: "/videos/benefit-stand-out-v2.mp4", fit: "cover" },
   { title: "Stop guessing. Start growing.", desc: "You don't need a content strategy degree. You need a system you can actually follow - this is that system.", video: "/videos/benefit-stop-guessing.mp4", fit: "cover" },
 ];
 
