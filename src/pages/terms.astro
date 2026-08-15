@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+// ============================================================
+// TERMS OF SERVICE - static legal page, not part of the funnel.
+// Header/footer chrome matches thank-you.astro/privacy.astro (no nav
+// links, no CTA button - built directly here rather than SiteNav.astro,
+// which always renders a CTA).
+// ============================================================
+const pageTitle = "Terms of Service";
+const lastUpdated = "August 15, 2026";
+
+const H2 = "mt-10 text-xl font-bold tracking-tight text-ink";
+const P = "mt-3 text-base leading-relaxed text-ink-muted";
+---
+
+<Base title={pageTitle} description="Terms of service for Viral Creator Academy, LLC.">
+  <header class="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center px-6 py-4">
+      <Logo href={false} />
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-6 py-16 md:py-20">
+    <h1 class="text-3xl font-extrabold tracking-tight text-ink md:text-4xl">{pageTitle}</h1>
+    <p class="mt-3 text-sm text-ink-muted">Last updated: {lastUpdated}</p>
+
+    <p class={P}>
+      By purchasing or using any product from Viral Creator Academy, LLC (Viral VFX Vault, Viral
+      Editing Academy, or related offers), you agree to these terms.
+    </p>
+
+    <h2 class={H2}>Products &amp; Access</h2>
+    <p class={P}>
+      Purchases grant you lifetime personal access to the applicable product(s). Access is for
+      your individual use only and may not be shared, resold, or redistributed.
+    </p>
+
+    <h2 class={H2}>Payment</h2>
+    <p class={P}>
+      All prices are listed in USD. Payments are processed securely through Stripe. By
+      purchasing, you authorize the charge shown at checkout.
+    </p>
+
+    <h2 class={H2}>Refund Policy</h2>
+    <p class={P}>
+      We offer a 7-day money-back guarantee from the date of purchase. If you&rsquo;re not
+      satisfied, email{" "}
+      <a href="mailto:colin@colinpomeroy.com" class="text-ink underline underline-offset-4">
+        colin@colinpomeroy.com
+      </a>{" "}
+      within 7 days of your purchase for a full refund, no questions asked.
+    </p>
+
+    <h2 class={H2}>Intellectual Property</h2>
+    <p class={P}>
+      All content, videos, and materials are the property of Viral Creator Academy, LLC and are
+      protected by copyright. You may not reproduce, distribute, or resell any part of the
+      product.
+    </p>
+
+    <h2 class={H2}>No Guarantee of Results</h2>
+    <p class={P}>
+      Results mentioned on this site (follower growth, views, etc.) reflect individual
+      experiences and are not guaranteed. Your results depend on your own effort and application
+      of the material.
+    </p>
+
+    <h2 class={H2}>Limitation of Liability</h2>
+    <p class={P}>
+      Viral Creator Academy, LLC is not liable for any indirect, incidental, or consequential
+      damages arising from use of our products.
+    </p>
+
+    <h2 class={H2}>Changes to These Terms</h2>
+    <p class={P}>
+      We may update these terms from time to time. Continued use of our products after changes
+      constitutes acceptance.
+    </p>
+
+    <h2 class={H2}>Contact</h2>
+    <p class={P}>
+      <a href="mailto:colin@colinpomeroy.com" class="text-ink underline underline-offset-4">
+        colin@colinpomeroy.com
+      </a>
+    </p>
+  </main>
+
+  <SiteFooter logoHref={false} />
+</Base>

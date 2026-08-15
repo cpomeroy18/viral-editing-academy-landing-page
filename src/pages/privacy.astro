@@ -1,0 +1,87 @@
+---
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+// ============================================================
+// PRIVACY POLICY - static legal page, not part of the funnel.
+// Header/footer chrome matches thank-you.astro (no nav links,
+// no CTA button - built directly here rather than SiteNav.astro,
+// which always renders a CTA).
+// ============================================================
+const pageTitle = "Privacy Policy";
+const lastUpdated = "August 15, 2026";
+
+const H2 = "mt-10 text-xl font-bold tracking-tight text-ink";
+const P = "mt-3 text-base leading-relaxed text-ink-muted";
+const UL = "mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-muted";
+---
+
+<Base title={pageTitle} description="Privacy policy for Viral Creator Academy, LLC.">
+  <header class="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center px-6 py-4">
+      <Logo href={false} />
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-6 py-16 md:py-20">
+    <h1 class="text-3xl font-extrabold tracking-tight text-ink md:text-4xl">{pageTitle}</h1>
+    <p class="mt-3 text-sm text-ink-muted">Last updated: {lastUpdated}</p>
+
+    <p class={P}>
+      Viral Creator Academy, LLC (&ldquo;we,&rdquo; &ldquo;us,&rdquo; &ldquo;our&rdquo;) operates
+      offer.colinpomeroy.com, vault.colinpomeroy.com, and course.colinpomeroy.com. This policy
+      explains what information we collect and how we use it.
+    </p>
+
+    <h2 class={H2}>Information We Collect</h2>
+    <ul class={UL}>
+      <li>
+        Contact information you provide (name, email address) when you sign up for a free
+        resource, purchase a product, or contact us
+      </li>
+      <li>
+        Payment information processed by our payment provider (Stripe) &mdash; we do not store
+        your card details directly
+      </li>
+      <li>Usage data (pages visited, links clicked) via standard analytics tools</li>
+    </ul>
+
+    <h2 class={H2}>How We Use Your Information</h2>
+    <ul class={UL}>
+      <li>To deliver the products and content you&rsquo;ve requested or purchased</li>
+      <li>
+        To send you emails related to your purchase or free sign-up, including educational
+        content and occasional promotional offers
+      </li>
+      <li>To improve our products and website</li>
+    </ul>
+
+    <h2 class={H2}>Sharing Your Information</h2>
+    <p class={P}>
+      We do not sell your personal information. We share data only with service providers who
+      help us operate (payment processing, email delivery, hosting) and only as needed to provide
+      our services.
+    </p>
+
+    <h2 class={H2}>Your Choices</h2>
+    <p class={P}>
+      You can unsubscribe from marketing emails at any time using the link in any email. To
+      request deletion of your data, contact us at{" "}
+      <a href="mailto:colin@colinpomeroy.com" class="text-ink underline underline-offset-4">
+        colin@colinpomeroy.com
+      </a>.
+    </p>
+
+    <h2 class={H2}>Contact</h2>
+    <p class={P}>
+      Viral Creator Academy, LLC<br />
+      15 Serramar Dr, Oakland, CA 94611<br />
+      <a href="mailto:colin@colinpomeroy.com" class="text-ink underline underline-offset-4">
+        colin@colinpomeroy.com
+      </a>
+    </p>
+  </main>
+
+  <SiteFooter logoHref={false} />
+</Base>
