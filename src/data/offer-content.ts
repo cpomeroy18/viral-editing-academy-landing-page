@@ -86,14 +86,71 @@ export const studentWins = [
 
 // --- WHAT YOU GET / PRICING & BONUS STACK ---
 // Core product + 5 bonuses. checkoutTotalValue below is the exact sum
-// (197 + 299 + 99 + 29 + 99 + 99 = 822), not an approximation.
+// (197 + 299 + 99 + 29 + 99 + 49 = 772), not an approximation. Bonus 5
+// dropped from $99 to $49 on 2026-08-14 - checkoutDeliverables (below)
+// re-derives automatically from this array via .map(), but
+// checkoutTotalValue is a separate hardcoded string and needs updating
+// by hand whenever any item's value changes.
+//
+// media: each item can carry a `video` (with `fit`, same cover/contain
+// convention as benefits/showcase clips elsewhere in this file) or an
+// `image`. Bonus 1 has neither yet - see the placeholder note below.
 export const deliverables = [
-  { title: "Viral VFX Vault", desc: "The full library, searchable by difficulty, style, and use case, with a step-by-step tutorial behind every effect.", value: "$197" },
-  { title: "Bonus 1: Viral Editing Academy (Full Course)", desc: "The complete system, start to finish - building a repeatable process for viral-ready content.", value: "$299" },
-  { title: "Bonus 2: Advanced Viral FX Course", desc: "Next-level effects and technique once you've got the basics down.", value: "$99" },
-  { title: "Bonus 3: Mobile Transitions Mini-Course", desc: "The transitions that make an edit feel seamless instead of choppy.", value: "$29" },
-  { title: "Bonus 4: CapCut Bootcamp", desc: "Every tool, shortcut, and setting worth knowing, so you're never fumbling mid-edit.", value: "$99" },
-  { title: "Bonus 5: \"5 Ideas Into 30 Posts\" Workshop", desc: "Turn one idea into a month of content instead of one post and a blank page tomorrow.", value: "$99" },
+  {
+    title: "Viral VFX Vault",
+    desc: "The full library, searchable by difficulty, style, and use case, with a step-by-step tutorial behind every effect.",
+    value: "$197",
+    video: "/videos/included-vault-3.0.mp4",
+    fit: "cover",
+  },
+  {
+    title: "Bonus 1: Viral Editing Academy (Full Course)",
+    value: "$299",
+    // PLACEHOLDER - no image/video yet. A custom 3-panel graphic for this
+    // bonus is still being made; swap this comment for a `video`/`image`
+    // field (same shape as the other items here) once it's ready.
+    phases: [
+      {
+        title: "Phase 1 — Viral FX Foundations",
+        desc: "Gear that works on any budget, phone settings that make your footage look intentional, and the lighting/composition basics that grab attention before you've made a single cut.",
+      },
+      {
+        title: "Phase 2 — The 5 Foundational Editing Tools",
+        desc: "Match cut, masking, keyframes, speed ramping, remove background - plus the quick-hit extras (transitions, zoom effects, camera angles) that separate a flat video from one that pops. Master these and you'll start spotting them in everything.",
+      },
+      {
+        title: "Phase 3 — Full Effect Tutorials, Start to Finish",
+        desc: "Idea, shot, edit, post - everything from Phases 1 and 2 combined into real, postable effects. 18 step-by-step walkthroughs you can follow immediately.",
+      },
+    ],
+  },
+  {
+    title: "Bonus 2: Advanced Viral FX Course",
+    desc: "15 additional next-level effects and techniques once you've got the basics down.",
+    value: "$99",
+    video: "/videos/benefit-stop-guessing.mp4",
+    fit: "cover",
+  },
+  {
+    title: "Bonus 3: Mobile Transitions Mini-Course",
+    desc: "The transitions that make an edit feel seamless instead of choppy.",
+    value: "$29",
+    video: "/videos/included-bonus3-transitions.mp4",
+    fit: "cover",
+  },
+  {
+    title: "Bonus 4: CapCut Bootcamp",
+    desc: "Every tool, shortcut, and setting worth knowing, so you're never fumbling mid-edit.",
+    value: "$99",
+    video: "/videos/benefit-save-hours-editing.mp4",
+    fit: "cover",
+  },
+  {
+    title: "Bonus 5: \"5 Ideas Into 30 Posts\" Workshop",
+    desc: "Turn one idea into a month of content instead of one post and a blank page tomorrow.",
+    value: "$49",
+    image: "/images/bonus5-workshop.jpg",
+  },
 ];
 
 // --- BENEFITS ---
@@ -229,7 +286,7 @@ export const testimonialsHeading = "What students are saying";
 
 export const checkoutEyebrow = "Your checkout";
 export const checkoutTitle = "Enroll in Viral VFX Vault";
-export const checkoutTotalValue = "$822";
+export const checkoutTotalValue = "$772";
 export const checkoutBadges = ["Lifetime access", "Instant access", "Learn at your own pace"];
 
 // Shown separately from the checkout stack - not counted in checkoutTotalValue.

@@ -205,13 +205,54 @@ const confirmationBanner =
         {
           deliverables.map((d) => (
             <div class="border-b border-line py-7">
-              <div class="flex items-start justify-between gap-4">
-                <h3 class="text-xl font-bold text-ink md:text-2xl">{d.title}</h3>
-                <span class="mt-1 shrink-0 rounded-full border border-line px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
-                  {d.value} value
-                </span>
+              <div class={d.video || d.image ? "grid gap-5 sm:grid-cols-[160px_1fr] sm:items-start" : ""}>
+                {
+                  (d.video || d.image) && (
+                    <div class="overflow-hidden rounded-card border border-line bg-surface-2">
+                      {d.video ? (
+                        <video
+                          src={d.video}
+                          autoplay
+                          muted
+                          loop
+                          playsinline
+                          class={`aspect-video w-full ${d.fit === "contain" ? "object-contain" : "object-cover"}`}
+                        />
+                      ) : (
+                        <img
+                          src={d.image}
+                          alt=""
+                          width="1200"
+                          height="676"
+                          class="aspect-video w-full object-cover"
+                          loading="lazy"
+                        />
+                      )}
+                    </div>
+                  )
+                }
+                <div>
+                  <div class="flex items-start justify-between gap-4">
+                    <h3 class="text-xl font-bold text-ink md:text-2xl">{d.title}</h3>
+                    <span class="mt-1 shrink-0 rounded-full border border-line px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+                      {d.value} value
+                    </span>
+                  </div>
+                  {d.desc && <p class="mt-2 max-w-2xl text-base leading-relaxed text-ink-muted">{d.desc}</p>}
+                  {
+                    d.phases && (
+                      <div class="mt-4 space-y-4">
+                        {d.phases.map((p) => (
+                          <div>
+                            <p class="text-sm font-bold text-ink">{p.title}</p>
+                            <p class="mt-1 max-w-2xl text-sm leading-relaxed text-ink-muted">{p.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )
+                  }
+                </div>
               </div>
-              <p class="mt-2 max-w-2xl text-base leading-relaxed text-ink-muted">{d.desc}</p>
             </div>
           ))
         }
