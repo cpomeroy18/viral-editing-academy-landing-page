@@ -63,7 +63,18 @@ const copy = {
   mode === "split" && (
     <section class="mx-auto max-w-6xl px-6 pb-16 pt-12 lg:pt-16">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <HeroCopy align="left" {...copy} bullets={bullets} />
+        <HeroCopy align="left" {...copy} bullets={bullets}>
+          {
+            mediaVideo && (
+              <div
+                slot="media"
+                class="overflow-hidden rounded-card border border-line bg-surface-2 shadow-xl shadow-black/5 lg:hidden"
+              >
+                <video src={mediaVideo} poster={image} autoplay muted loop playsinline class="h-auto w-full" />
+              </div>
+            )
+          }
+        </HeroCopy>
         <div class="hidden lg:block lg:pl-4">
           <div class="overflow-hidden rounded-card border border-line bg-surface-2 shadow-xl shadow-black/5">
             {
