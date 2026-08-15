@@ -41,6 +41,7 @@ import {
   heroEyebrow,
   heroSecondaryLabel,
   heroTrustLabel,
+  heroAvatars,
   trustedByLabel,
   trustedByLogos,
   problemEyebrow,
@@ -54,6 +55,8 @@ import {
   winsEyebrow,
   winsHeading,
   winsSub,
+  vaultShowcaseHeading,
+  vaultShowcaseSub,
   includedEyebrow,
   includedHeading,
   objectionEyebrow,
@@ -116,6 +119,7 @@ const confirmationBanner =
     secondaryLabel={heroSecondaryLabel}
     secondaryHref="#how"
     trustLabel={heroTrustLabel}
+    avatars={heroAvatars}
     image="https://picsum.photos/seed/vea-hero/1100/900"
     mediaVideo={heroVideo}
   />
@@ -208,6 +212,26 @@ const confirmationBanner =
     </div>
   </section>
 
+  <!-- VAULT SHOWCASE (large centerpiece video) -->
+  <section class="bg-surface-2">
+    <div class={SECTION}>
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class={HEADING}>{vaultShowcaseHeading}</h2>
+        <p class="mt-4 text-lg leading-relaxed text-ink-muted">{vaultShowcaseSub}</p>
+      </div>
+      <div class="mx-auto mt-10 max-w-[800px] overflow-hidden rounded-card border border-line shadow-xl shadow-black/10">
+        <video
+          src="/videos/included-vault-3.0.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          class="aspect-video w-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
   <!-- STUDENT WINS (rotating, result-led) -->
   <StudentWins
     eyebrow={winsEyebrow}
@@ -225,58 +249,71 @@ const confirmationBanner =
       </div>
       <div class="mx-auto mt-12 max-w-4xl border-t border-line">
         {
-          deliverables.map((d) => (
-            <div class="border-b border-line py-7">
-              <div class={d.video || d.image ? "grid gap-5 sm:grid-cols-[160px_1fr] sm:items-start" : ""}>
-                {
-                  (d.video || d.image) && (
-                    <div class="overflow-hidden rounded-card border border-line bg-surface-2">
-                      {d.video ? (
-                        <video
-                          src={d.video}
-                          autoplay
-                          muted
-                          loop
-                          playsinline
-                          class={`aspect-video w-full ${d.fit === "contain" ? "object-contain" : "object-cover"}`}
-                        />
-                      ) : (
-                        <img
-                          src={d.image}
-                          alt=""
-                          width="1200"
-                          height="676"
-                          class="aspect-video w-full object-cover"
-                          loading="lazy"
-                        />
-                      )}
-                    </div>
-                  )
-                }
-                <div>
-                  <div class="flex items-start justify-between gap-4">
-                    <h3 class="text-xl font-bold text-ink md:text-2xl">{d.title}</h3>
-                    <span class="mt-1 shrink-0 rounded-full border border-line px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
-                      {d.value} value
-                    </span>
-                  </div>
-                  {d.desc && <p class="mt-2 max-w-2xl text-base leading-relaxed text-ink-muted">{d.desc}</p>}
+          deliverables.map((d) => {
+            // portraitMedia (Bonus 1 only): fixed 150x280px box, image fully
+            // contained (no crop) with any leftover space as letterboxing.
+            // A hard fixed size (not a max-width tied to a breakpoint) so it
+            // renders identically at every viewport, not just sm:+.
+            const mediaBoxSizeClass = d.portraitMedia ? "w-[160px] aspect-[8/15]" : "";
+            const mediaAspectClass = d.portraitMedia ? "" : "aspect-video";
+            const mediaFitClass = d.portraitMedia
+              ? "w-full h-full object-contain"
+              : d.fit === "contain"
+                ? "w-full object-contain"
+                : "w-full object-cover";
+            return (
+              <div class="border-b border-line py-7">
+                <div class={d.video || d.image ? "grid gap-5 sm:grid-cols-[160px_1fr] sm:items-start" : ""}>
                   {
-                    d.phases && (
-                      <div class="mt-4 space-y-4">
-                        {d.phases.map((p) => (
-                          <div>
-                            <p class="text-sm font-bold text-ink">{p.title}</p>
-                            <p class="mt-1 max-w-2xl text-sm leading-relaxed text-ink-muted">{p.desc}</p>
-                          </div>
-                        ))}
+                    (d.video || d.image) && (
+                      <div class={`overflow-hidden rounded-card border border-line bg-surface-2 ${mediaBoxSizeClass}`}>
+                        {d.video ? (
+                          <video
+                            src={d.video}
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            class={`${mediaAspectClass} ${mediaFitClass}`}
+                          />
+                        ) : (
+                          <img
+                            src={d.image}
+                            alt=""
+                            width="1200"
+                            height="676"
+                            class={`${mediaAspectClass} ${mediaFitClass}`}
+                            loading="lazy"
+                          />
+                        )}
                       </div>
                     )
                   }
+                  <div>
+                    <div class="flex items-start justify-between gap-4">
+                      <h3 class="text-xl font-bold text-ink md:text-2xl">{d.title}</h3>
+                      <span class="mt-1 shrink-0 rounded-full border border-line px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+                        {d.value} value
+                      </span>
+                    </div>
+                    {d.desc && <p class="mt-2 max-w-2xl text-base leading-relaxed text-ink-muted">{d.desc}</p>}
+                    {
+                      d.phases && (
+                        <div class="mt-4 space-y-4">
+                          {d.phases.map((p) => (
+                            <div>
+                              <p class="text-sm font-bold text-ink">{p.title}</p>
+                              <p class="mt-1 max-w-2xl text-sm leading-relaxed text-ink-muted">{p.desc}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )
+                    }
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
+            );
+          })
         }
       </div>
     </div>

@@ -15,6 +15,9 @@ interface Props {
   secondaryLabel?: string;
   secondaryHref?: string;
   trustLabel?: string;
+  /** Real photos for the trust-row avatar stack. Falls back to placeholder
+      stock avatars if not passed. */
+  avatars?: string[];
 }
 
 const {
@@ -28,15 +31,11 @@ const {
   secondaryLabel,
   secondaryHref,
   trustLabel,
+  avatars = [1, 2, 3, 4, 5, 6].map((n) => `https://i.pravatar.cc/64?img=${n * 11}`),
 } = Astro.props;
 
 const isCenter = align === "center";
 const hasMedia = Astro.slots.has("media");
-
-// Placeholder avatar stack for the trust row (students swap for real ones).
-const avatars = [1, 2, 3, 4, 5, 6].map(
-  (n) => `https://i.pravatar.cc/64?img=${n * 11}`
-);
 
 const headlineColor = "text-ink";
 const subColor = "text-ink-muted";

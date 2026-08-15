@@ -16,6 +16,8 @@ interface Props {
   secondaryLabel?: string;
   secondaryHref?: string;
   trustLabel?: string;
+  /** Real photos for the trust-row avatar stack, passed through to HeroCopy. */
+  avatars?: string[];
   /** split: right-hand image · vsl: video poster */
   image?: string;
   imageAlt?: string;
@@ -40,6 +42,7 @@ const {
   imageAlt = "",
   mediaVideo,
   videoUrl,
+  avatars,
 } = Astro.props;
 
 // Shared content passed to HeroCopy in every mode.
@@ -52,6 +55,7 @@ const copy = {
   secondaryLabel,
   secondaryHref,
   trustLabel,
+  avatars,
 };
 ---
 

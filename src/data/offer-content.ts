@@ -107,9 +107,14 @@ export const deliverables = [
   {
     title: "Bonus 1: Viral Editing Academy (Full Course)",
     value: "$299",
-    // PLACEHOLDER - no image/video yet. A custom 3-panel graphic for this
-    // bonus is still being made; swap this comment for a `video`/`image`
-    // field (same shape as the other items here) once it's ready.
+    // Portrait 3-panel graphic (720x1350, converted from Gifs/Copy of VEA 3
+    // - step process  Offer Benefits  (720 x 1350 px).gif) - deliberately
+    // NOT the shared aspect-video/160px treatment the other items use (see
+    // portraitMedia below), since cropping this to 16:9 would lose ~70%
+    // of it. Sized wider + taller instead, to roughly match the height of
+    // the 3-phase text block next to it.
+    video: "/videos/included-bonus1-3phase.mp4",
+    portraitMedia: true,
     phases: [
       {
         title: "Phase 1 — Viral FX Foundations",
@@ -164,7 +169,7 @@ export const deliverables = [
 // "cover" for clips that are already 16:9 (checked via ffprobe).
 export const benefits = [
   { title: "Skyrocket your views and following", desc: "Every effect in the Vault is already proven - real videos that pulled real views. Steal what works instead of guessing.", video: "/videos/benefit-skyrocket-views.mp4", fit: "cover" },
-  { title: "Never run out of content ideas again", desc: "Open the Vault, pick an effect, shoot. No more staring at your phone wondering what to post next.", video: "/videos/benefit-never-run-out-of-ideas.mp4", fit: "cover" },
+  { title: "Never run out of content ideas again", desc: "Open the Vault, pick an effect, shoot. No more staring at your phone wondering what to post next.", video: "/videos/included-vault-3.0.mp4", fit: "cover" },
   { title: "Edit like a pro with just your phone", desc: "No laptop, no expensive software, no gear list. Everything's built for CapCut on your phone - the same way I do it.", video: "/videos/benefit-edit-with-just-your-phone.mp4", fit: "cover" },
   { title: "Save hours of editing time", desc: "Every tutorial skips the trial and error. You get the exact steps, not an afternoon spent reverse-engineering someone else's edit.", video: "/videos/benefit-save-hours-editing.mp4", fit: "cover" },
   { title: "Stand out in the scroll", desc: "Most people are posting the same flat talking-head video. A few seconds of the right effect is what stops the thumb.", video: "/videos/benefit-stand-out.mp4", fit: "contain" },
@@ -242,6 +247,18 @@ export const heroEyebrow = "Viral VFX Vault";
 export const heroSecondaryLabel = "See how it works";
 export const heroTrustLabel = "Backed by real student results";
 
+// Hero trust-row avatars - same real student photos used in the
+// testimonials sections further down the page (Helen Minh, Inam,
+// Ursulline, Stacey, Craig, Chris), not placeholder stock avatars.
+export const heroAvatars = [
+  "/images/testimonials/helen.jpg",
+  "/images/testimonials/inam.jpg",
+  "/images/testimonials/ursulline.jpg",
+  "/images/testimonials/stacey.jpg",
+  "/images/testimonials/craig.jpg",
+  "/images/testimonials/chris.jpg",
+];
+
 // --- TRUSTED BY (brand partnership logo marquee) ---
 // Logos are cropped-to-content + normalized to a consistent height
 // (see public/images/brand-logos/), sourced from Brand Logos/ at the
@@ -277,6 +294,13 @@ export const solutionBanner = "/videos/how-it-works-teleport-banner.mp4";
 export const winsEyebrow = "Student wins";
 export const winsHeading = "Results from real students";
 export const winsSub = "Real creators, real edits, real results - built with the same system you're getting.";
+
+// --- VAULT SHOWCASE (large centerpiece video, no eyebrow) ---
+// Same video used for the small Vault thumbnail in "Everything included"
+// (included-vault-3.0.mp4) - reused here at a much larger, centered size.
+export const vaultShowcaseHeading = "Take a look inside the Vault";
+export const vaultShowcaseSub =
+  "This is exactly what you'll be scrolling through - search, filter, and find the effect you need in seconds.";
 
 export const includedEyebrow = "Everything included";
 export const includedHeading = "Here's exactly what you get";
