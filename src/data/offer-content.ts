@@ -114,6 +114,13 @@ export const deliverables = [
     // of it. Sized wider + taller instead, to roughly match the height of
     // the 3-phase text block next to it.
     video: "/videos/included-bonus1-3phase.mp4",
+    // Desktop-only. On mobile this item swaps to mobileVideo instead (see
+    // the deliverables.map() render logic in welcome.astro/offer.astro) -
+    // a scrolling screen-capture of the actual course dashboard, converted
+    // from Gifs/Course Scroll.gif. Landscape source (1920x1080), rendered
+    // in the same portraitMedia box via object-contain like the desktop
+    // clip, just letterboxed instead of full-bleed.
+    mobileVideo: "/videos/bonus1-course-scroll-mobile.mp4",
     portraitMedia: true,
     phases: [
       {

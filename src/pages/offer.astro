@@ -250,27 +250,56 @@ const finalCtaHeading = "Learn to edit viral content with just your phone";
                 <div class={d.video || d.image ? "grid gap-5 sm:grid-cols-[160px_1fr] sm:items-start" : ""}>
                   {
                     (d.video || d.image) && (
-                      <div class={`overflow-hidden rounded-card border border-line bg-surface-2 ${mediaBoxSizeClass}`}>
-                        {d.video ? (
-                          <video
-                            src={d.video}
-                            autoplay
-                            muted
-                            loop
-                            playsinline
-                            class={`${mediaAspectClass} ${mediaFitClass}`}
-                          />
-                        ) : (
-                          <img
-                            src={d.image}
-                            alt=""
-                            width="1200"
-                            height="676"
-                            class={`${mediaAspectClass} ${mediaFitClass}`}
-                            loading="lazy"
-                          />
-                        )}
-                      </div>
+                      d.mobileVideo ? (
+                        <>
+                          {/* Mobile: full-width 16:9 box matching this clip's native
+                              aspect ratio (a landscape screen-capture, not the portrait
+                              teleport-sequence graphic desktop uses) - object-cover so
+                              there's no letterboxing even if it's off by a hair. */}
+                          <div class="aspect-video w-full overflow-hidden rounded-card border border-line bg-surface-2 sm:hidden">
+                            <video
+                              src={d.mobileVideo}
+                              autoplay
+                              muted
+                              loop
+                              playsinline
+                              class="h-full w-full object-cover"
+                            />
+                          </div>
+                          <div class={`hidden overflow-hidden rounded-card border border-line bg-surface-2 sm:block ${mediaBoxSizeClass}`}>
+                            <video
+                              src={d.video}
+                              autoplay
+                              muted
+                              loop
+                              playsinline
+                              class={`${mediaAspectClass} ${mediaFitClass}`}
+                            />
+                          </div>
+                        </>
+                      ) : (
+                        <div class={`overflow-hidden rounded-card border border-line bg-surface-2 ${mediaBoxSizeClass}`}>
+                          {d.video ? (
+                            <video
+                              src={d.video}
+                              autoplay
+                              muted
+                              loop
+                              playsinline
+                              class={`${mediaAspectClass} ${mediaFitClass}`}
+                            />
+                          ) : (
+                            <img
+                              src={d.image}
+                              alt=""
+                              width="1200"
+                              height="676"
+                              class={`${mediaAspectClass} ${mediaFitClass}`}
+                              loading="lazy"
+                            />
+                          )}
+                        </div>
+                      )
                     )
                   }
                   <div>
