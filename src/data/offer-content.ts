@@ -18,9 +18,9 @@ export const navLinks = [
 
 // --- HERO ---
 export const heroHeadline =
-  'Turn your phone into a <span class="text-brand-500">scroll-stopping content machine</span>';
+  'Get <span class="text-brand-500">10K–140K views</span> on your next video';
 export const heroSubheadline =
-  "Unlock the Viral VFX Vault and start creating edits that get attention, grow your following, and earn you more money - all with your phone.";
+  "Unlock my Viral FX Tutorial Template System and start growing your following — with just your phone. No on-camera charisma or editing experience required.";
 export const heroBullets = [
   "Mobile-only editing, no expensive gear",
   "Easily find the viral effects people actually use to go viral, all in one sortable place",
@@ -250,7 +250,7 @@ export const faqs = [
 export const pageTitle = "Viral VFX Vault";
 export const ctaLabel = "Enroll now - $97"; // shared by nav, hero, final CTA + sticky bar
 
-export const heroEyebrow = "Viral VFX Vault";
+export const heroEyebrow = "For content creators stuck under 10K followers";
 export const heroSecondaryLabel = "See how it works";
 export const heroTrustLabel = "Backed by real student results";
 
